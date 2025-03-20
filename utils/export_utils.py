@@ -2,12 +2,19 @@ import json
 import csv
 from pathlib import Path
 from datetime import datetime
-from models.transcript_analysis_models import TranscriptAnalysisReport
+import json
+from typing import Optional
 
-def export_report_to_json(report: TranscriptAnalysisReport, output_file: str):
+def export_report_to_json(report, output_file: str):
     """Serialize and save the report to a JSON file"""
     # Convert Pydantic model to dict
-    report_dict = report.dict()
+    if hasattr(report, 'model_dump'):
+        report_dict = report.model_dump()
+    elif hasattr(report, 'dict'):
+        report_dict = report.dict()
+    else:
+        # Already a dict
+        report_dict = report
     
     # Write to file with pretty formatting
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -15,7 +22,7 @@ def export_report_to_json(report: TranscriptAnalysisReport, output_file: str):
     
     print(f"Report exported to {output_file}")
 
-def export_keywords_to_csv(report: TranscriptAnalysisReport, output_file: str):
+def export_keywords_to_csv(report, output_file: str):
     """Export marketing keywords to CSV file"""
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
@@ -31,7 +38,7 @@ def export_keywords_to_csv(report: TranscriptAnalysisReport, output_file: str):
     
     print(f"Keywords exported to {output_file}")
 
-def export_technologies_to_csv(report: TranscriptAnalysisReport, output_file: str):
+def export_technologies_to_csv(report, output_file: str):
     """Export technologies to CSV file"""
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)

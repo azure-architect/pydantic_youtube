@@ -7,6 +7,15 @@ import httpx
 class InferenceType(str, Enum):
     DIRECT = "direct"
     INFERRED = "inferred"
+    
+    @classmethod
+    def _missing_(cls, value):
+        # Handle case insensitivity
+        if isinstance(value, str):
+            for member in cls:
+                if member.value.lower() == value.lower():
+                    return member
+        return None
 
 @dataclass
 class BusinessProcess:
@@ -60,5 +69,6 @@ class AnalysisResources:
     """Container for API clients and resources needed for transcript analysis"""
     http_client: httpx.AsyncClient
     api_key: str
+    model: str = "mistral:latest-32"  # Default model to use
     tech_taxonomy: Optional[dict] = None  # Optional reference data for technology classification
     marketing_keywords_db: Optional[List[str]] = None  # Optional reference marketing keywords

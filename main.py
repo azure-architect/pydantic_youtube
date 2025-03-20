@@ -3,6 +3,7 @@ import httpx
 import time
 import sys
 import os
+import json
 from pathlib import Path
 from pydantic_graph.persistence.file import FileStatePersistence
 
@@ -19,9 +20,7 @@ from utils.export_utils import (
     export_technologies_to_csv, create_report_folder
 )
 
-# Add this function before the main() function
-
-async def analyze_youtube_transcript(transcript: str, video_title: str, video_id: str, run_id: str = None):
+async def analyze_youtube_transcript(transcript: str, video_title: str, video_id: str, run_id: str = None, model: str = "mistral:latest-32"):
     """Run a complete YouTube transcript analysis workflow"""
     
     if not run_id:
@@ -35,6 +34,7 @@ async def analyze_youtube_transcript(transcript: str, video_title: str, video_id
         deps = AnalysisResources(
             http_client=http_client,
             api_key="your-api-key",
+            model=model,
             # Optional: load technology taxonomy from file or database
             tech_taxonomy={
                 "programming_languages": ["Python", "JavaScript", "Java", "C++"],
@@ -55,6 +55,7 @@ async def analyze_youtube_transcript(transcript: str, video_title: str, video_id
         
         print(f"Starting analysis of: {video_title} (ID: {video_id})")
         print(f"Transcript length: {len(transcript)} characters")
+        print(f"Using model: {model}")
         
         # Run the graph
         result = await transcript_analysis_graph.run(
@@ -68,6 +69,7 @@ async def analyze_youtube_transcript(transcript: str, video_title: str, video_id
         
         # Return the final report
         return result.output
+        
 async def main():
     # Example command line usage
     import argparse
@@ -79,6 +81,8 @@ async def main():
     parser.add_argument('--video-id', help='YouTube video ID (optional if URL is provided)')
     parser.add_argument('--run-id', help='Optional run ID for persistence')
     parser.add_argument('--language', default='en', help='Preferred transcript language')
+    parser.add_argument('--model', default='mistral:latest-32', help='Ollama model to use')
+    parser.add_argument('--output-dir', help='Custom output directory for results')
     args = parser.parse_args()
     
     if not args.transcript_file and not args.url:
@@ -126,11 +130,16 @@ async def main():
         transcript=transcript,
         video_title=video_title,
         video_id=video_id,
-        run_id=args.run_id
+        run_id=args.run_id,
+        model=args.model
     )
     
     # Create output folder
-    output_folder = create_report_folder(video_id)
+    if args.output_dir:
+        output_folder = Path(args.output_dir)
+        output_folder.mkdir(parents=True, exist_ok=True)
+    else:
+        output_folder = create_report_folder(video_id)
     
     # Export results
     export_report_to_json(report, f"{output_folder}/full_report.json")
