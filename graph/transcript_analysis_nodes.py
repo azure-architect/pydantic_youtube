@@ -3,6 +3,7 @@ from pydantic_graph import BaseNode, End, GraphRunContext, Edge
 from pydantic_ai import RunContext
 from pydantic_ai.format_as_xml import format_as_xml
 from typing import Annotated, Union
+import logging
 
 import sys
 import os
@@ -21,30 +22,50 @@ from agents.transcript_analysis_agents import (
     tech_process_agent, technology_agent, summary_agent
 )
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
 # Important: Define all node classes with string literals for return types
 @dataclass
 class SegmentTranscript(BaseNode[TranscriptAnalysisState, AnalysisResources]):
-    """Segment the transcript into logical parts by topic"""
+    """Segment the transcript into logical parts by topic using function calling"""
     
     async def run(
         self, ctx: GraphRunContext[TranscriptAnalysisState, AnalysisResources]
     ) -> "ExtractKeywords":  # Use string literal here
-        prompt = f"""
-        Segment this YouTube video transcript into logical parts by topic.
-        Video title: {ctx.state.video_title}
+        logging.info(f"Segmenting transcript for video: {ctx.state.video_title} ({len(ctx.state.transcript)} chars)")
         
-        TRANSCRIPT:
-        {ctx.state.transcript}
-        """
-        
-        result = await segment_agent.run(
-            prompt,
-            message_history=ctx.state.segmentation_agent_messages
-        )
-        ctx.state.segmentation_agent_messages += result.all_messages()
-        ctx.state.segments = [segment.dict() for segment in result.data]
-        
-        return ExtractKeywords()
+        try:
+            # Use the segmentation service from ollama_toolkit
+            from ollama_toolkit.tools.text_segmentation import segment_transcript
+            
+            result = segment_transcript(
+                ctx.state.transcript,
+                model="mistral:latest-32",  # Or get from resources
+            )
+            
+            if result["success"]:
+                # Convert Pydantic models to dictionaries for state storage
+                ctx.state.segments = [segment.model_dump() for segment in result["segments"]]
+                logging.info(f"Successfully segmented transcript into {len(ctx.state.segments)} segments")
+                return ExtractKeywords()
+            else:
+                # Handle error with fallback
+                logging.error(f"Segmentation failed: {result.get('error')}")
+                # Implement fallback segmentation
+                ctx.state.segments = [{"topic": "Full Transcript", "content": ctx.state.transcript}]
+                logging.info("Using fallback segmentation")
+                return ExtractKeywords()
+                
+        except Exception as e:
+            logging.exception(f"Error in segmentation: {str(e)}")
+            # Implement fallback
+            ctx.state.segments = [{"topic": "Full Transcript", "content": ctx.state.transcript}]
+            logging.info("Using fallback segmentation due to exception")
+            return ExtractKeywords()
 
 @dataclass
 class ExtractKeywords(BaseNode[TranscriptAnalysisState, AnalysisResources]):
@@ -179,7 +200,6 @@ class CreateFinalReport(BaseNode[TranscriptAnalysisState, AnalysisResources, Tra
     async def run(
         self, ctx: GraphRunContext[TranscriptAnalysisState, AnalysisResources]
     ) -> End[TranscriptAnalysisReport]:
-        # ... rest of the method remains the same
         # Prepare data for the final report
         marketing_keywords = [
             MarketingKeyword(

@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "segments": [
+    {
+      "topic": "Welcome",
+      "content": "Welcome to the master class on Penic AI, a new framework for building AI agents. You may be familiar with Penic, the typing and validation library for Python that is widely used for structuring input and output from LLMs. PyEn AI is a new framework from the same team specifically designed for building agents. In this series, you'll learn about the core features of Penic AI by building agents and hit all key features of the framework with plenty of examples. By the end of this master class, you'll have the confidence and knowledge to build your own agents."
+    },
+    {
+      "topic": "Introduction to Penic AI",
+      "content": "This master class is about learning Penic AI, a new framework for building AI agents. It's from the same team as Penic, a typing and validation library for Python. This new framework, specifically designed for building agents, will be covered in this series. You'll learn the core features of Penic AI by building agents, explore different models both commercial and open models such as llama 3.2 to build more capable agent systems, increase complexity and capabilities of agents by adding more features, understand what makes Penic AI unique among agent frameworks, code examples covering critical aspects of the framework, start with simple agents in just five lines of code, and take a high-level look at how Penic AI works. The framework is Python Centric, leverages Python's control flow and agent composition to build any AI-driven project, and supports open AI, Anthropic Gemini, and many more models."
+    },
+    {
+      "topic": "Core Features of Penic AI",
+      "content": "Penic AI is a new framework for building AI agents, specifically designed by the team behind Penic, a typing and validation library for Python. The core features of Penic AI include: type safety, seamless integration with Identic log for real-time debugging, performance monitoring, and tracking; support for open AI, Anthropic Gemini, and many more models; unique dependency injection system; and the ability to stream LLM outputs continuously with immediate validation. The framework is designed to make type checking as easy as possible, uses Python for most operations, and integrates well with static type checkers like MyPy and Pyi. It provides a simple interface to implement support for other models and supports multiple agents where each agent can operate with its own model exchanging information through message history and a dynamic runtime context."
+    },
+    {
+      "topic": "Building Agents with Examples",
+      "content": "In this master class, you'll learn about the core features of Penic AI by building agents. We will cover all key features of the framework with plenty of examples. By the end of this, you'll have the confidence and knowledge to build your own agents. We'll start simple by building our first agents in just five lines of code. We'll explore how to use different models both commercial and local open models such as Llama 3.2 to build more capable agent systems gradually. The unique features of Penic AI include its type safety, Python Centric nature, integration with Identic Log Fire for real-time debugging, performance monitoring, and tracking, and a unique dependency injection system."
+    },
+    {
+      "topic": "Types of Models",
+      "content": "This section is about 'Types of Models' in Penti AI. The models discussed are Open AI and Local Open Models such as Llama 3.2."
+    },
+    {
+      "topic": "Increasing Complexity and Capabilities of Agents",
+      "content": "This section discusses about building agents using Penic AI, a new framework for creating AI agents. The focus is on increasing the complexity and capabilities of these agents by adding more features and using different models both commercial and local open models like Llama 3.2. Penti AI offers unique features such as type-safety, integration with IDE log fire for real-time debugging, performance monitoring, and tracking. It also provides a unique dependency injection system."
+    },
+    {
+      "topic": "Unique Features of Penic AI",
+      "content": "Penic AI is a new framework for building AI agents. It's specifically designed by the team behind Penic, a typing and validation library for Python. Some unique features that make it attractive for building agent systems include: It supports open AI, Anthropic Gemini, and many more models, seamlessly integrates with Identic Log Fire for real-time debugging, performance monitoring, and tracking, is type safe, designed to make type checking as easy as possible, Python Centric, leverages python for most operations, uses the power of Identic to validate and structure model outputs, has a unique dependency injection system, offers a dependency injection system unique among Frameworks to provide data and services to your agent, provides the ability to stream llm outputs continuously with immediate validation ensuring rapid accurate results."
+    },
+    {
+      "topic": "Understanding Penic AI's Functionality",
+      "content": "Penic AI is a new framework for building AI agents, specifically designed by the team behind the typing and validation library for Python, Penic. It aims to simplify the agent creation process. In this series, you will learn about the core features of Penic AI by building agents. The framework leverages Python's control flow and agent composition to build any AI-driven project. It supports open AI, Anthropic Gemini, and many more models, integrates with Identic Log Fire for real-time debugging, performance monitoring, and tracking, is type safe, python Centric, uses the power of Identic to validate and structure model outputs, has a unique dependency injection system, and offers a self-correction ability. In this master class, you will code examples covering all critical aspects of the framework."
+    },
+    {
+      "topic": "First Example",
+      "content": "Hello World example in Penic AI framework. The example is built using 5 lines of code and uses an open AI model (GPT for all mini) to answer a simple question: what is the capital of the United States."
+    },
+    {
+      "topic": "Summary",
+      "content": "penti AI is a new framework for building AI agents, designed to support key features such as type checking and dependency injection. It was built by the same team behind penic, a popular Python library for structuring input and output from LLMs. In this master class, you will learn about core features of penti AI by building agents, covering various models both commercial (such as open AI) and local open models (like llama 3.2). The framework uses plain Python to control the flow of agent data with no need for domain-specific code or extra classes. It offers a unique dependency injection system and supports multiple agents that can operate with their own model, exchanging information through message history and dynamic runtime context."
+    }
+  ],
+  "metrics": {
+    "total_words": 1967,
+    "segment_words": 1002,
+    "coverage": 50.94051855617692,
+    "avg_segment_length": 100.2
+  }
+}
