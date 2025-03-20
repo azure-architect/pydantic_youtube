@@ -1,4 +1,6 @@
 from pydantic_ai import Agent
+from pydantic_ai.models.openai import OpenAIModel
+from pydantic_ai.providers.openai import OpenAIProvider
 from typing import List
 import sys
 import os
@@ -15,13 +17,41 @@ from state.transcript_analysis_state import AnalysisResources
 
 # Create specialized agents
 segment_agent = Agent(
-    'anthropic:claude-3-5-sonnet-latest',
+            OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),  # Or your local model like 'ollama:llama3'
     result_type=List[TranscriptSegment],
-    system_prompt='Divide a YouTube transcript into logical segments by topic.'
+    system_prompt='''
+    Divide a YouTube transcript into logical segments by topic.
+    
+    IMPORTANT: Your response must be a valid list of JSON objects, with each object having:
+    - "content": the transcript text for this segment
+    - "topic": a short title describing the topic of this segment
+    - Optional "start_time_approx": approximate timestamp if available
+    
+    Example response format:
+    [
+      {
+        "content": "Welcome to this tutorial...",
+        "topic": "Introduction",
+        "start_time_approx": "0:00"
+      },
+      {
+        "content": "First, let's download the necessary packages...",
+        "topic": "Setup",
+        "start_time_approx": "1:30"
+      }
+    ]
+    ''',
+    retries=3  # Increase retries
 )
 
 keyword_agent = Agent(
-    'openai:gpt-4o',
+        OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),
     deps_type=AnalysisResources,
     result_type=List[MarketingKeyword],
     system_prompt='''
@@ -32,7 +62,10 @@ keyword_agent = Agent(
 )
 
 business_process_agent = Agent(
-    'anthropic:claude-3-5-sonnet-latest',
+        OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),
     result_type=List[BusinessProcessModel],
     system_prompt='''
     Identify business processes described in the transcript.
@@ -47,7 +80,10 @@ business_process_agent = Agent(
 )
 
 tech_process_agent = Agent(
-    'openai:gpt-4o',
+        OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),
     result_type=List[TechnicalProcessModel],
     system_prompt='''
     Identify technical processes described in the transcript.
@@ -62,7 +98,10 @@ tech_process_agent = Agent(
 )
 
 technology_agent = Agent(
-    'anthropic:claude-3-5-sonnet-latest',
+        OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),
     deps_type=AnalysisResources,
     result_type=List[TechnologyModel],
     system_prompt='''
@@ -79,7 +118,10 @@ technology_agent = Agent(
 )
 
 summary_agent = Agent(
-    'openai:gpt-4o',
+        OpenAIModel(
+        model_name='mistral:7b-instruct', # or whatever model you have in Ollama
+        provider=OpenAIProvider(base_url='http://localhost:11434/v1')
+    ),
     result_type=TranscriptAnalysisReport,
     system_prompt='Create a comprehensive analysis report from the extracted information about a YouTube transcript.'
 )
