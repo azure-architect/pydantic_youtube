@@ -106,6 +106,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+*_env/
 
 # Spyder project settings
 .spyderproject
@@ -155,4 +156,4 @@ secrets.json
 
 # Project specific
 analysis_*.json
-*_transcript.txt
+*_transcript.txt*_env

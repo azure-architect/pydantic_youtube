@@ -45,31 +45,26 @@ def fetch_transcript(video_id: str, languages=['en']) -> Optional[str]:
         print(f"Error fetching transcript: {e}")
         return None
 
-    def fetch_video_info(video_id: str) -> Dict:
-        """
-        Fetch video title and other metadata
-        """
-        try:
-            # This is a workaround as youtube_transcript_api doesn't directly provide video title
-            transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-            
-            # Get available languages more safely
-            languages = []
-            try:
-                if hasattr(transcript_list, '_transcripts'):
-                    languages = [t.language for t in transcript_list._transcripts.values()]
-                # Newer versions might use a different attribute
-            except AttributeError:
-                pass
-                
-            return {
-                "video_id": video_id,
-                "title": f"YouTube Video {video_id}",  # Placeholder
-                "languages": languages
-            }
-        except Exception as e:
-            print(f"Error fetching video info: {e}")
-            return {"video_id": video_id, "title": f"YouTube Video {video_id}"}
+def fetch_video_info(video_id: str) -> Dict:
+    """
+    Fetch video title and other metadata
+    Note: This is a simplified version using just the transcript API capabilities
+    For more complete data you might want to use youtube-dl or the YouTube Data API
+    """
+    try:
+        # This is a workaround as youtube_transcript_api doesn't directly provide video title
+        # In a full implementation, you might want to use the YouTube Data API instead
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+        
+        # Get available info
+        return {
+            "video_id": video_id,
+            "title": f"YouTube Video {video_id}",  # Placeholder
+            "languages": [t.language for t in transcript_list._transcripts.values()]
+        }
+    except Exception as e:
+        print(f"Error fetching video info: {e}")
+        return {"video_id": video_id, "title": f"YouTube Video {video_id}"}
 
 def fetch_transcript_from_url(url: str, languages=['en']) -> Dict:
     """Fetch transcript and video info from a YouTube URL"""
