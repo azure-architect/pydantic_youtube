@@ -1,3 +1,5 @@
+# state/transcript_analysis_state.py
+import json
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Set
 from datetime import datetime

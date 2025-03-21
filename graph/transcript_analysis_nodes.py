@@ -6,6 +6,8 @@ from typing import Annotated, Union
 import logging
 from pydantic import BaseModel
 from typing import List
+from enum import Enum
+# Add this import at the top of the file with the other imports
 
 import sys
 import os
@@ -23,6 +25,11 @@ from agents.transcript_analysis_agents import (
     segment_agent, keyword_agent, business_process_agent,
     tech_process_agent, technology_agent, summary_agent
 )
+
+# Define Status enum to replace the missing import
+class Status(Enum):
+    SUCCESS = "success"
+    FAILURE = "failure"
 
 # Configure logging
 logging.basicConfig(
@@ -564,6 +571,7 @@ class CreateFinalReport(BaseNode[TranscriptAnalysisState, AnalysisResources, Tra
         try:
             # Use ollama toolkit for structured summary
             from ollama_toolkit.function_calling import call_with_function
+            import json
             
             # Prepare summary data
             summary_data = {
@@ -659,3 +667,66 @@ class CreateFinalReport(BaseNode[TranscriptAnalysisState, AnalysisResources, Tra
         )
         
         return End(final_report)
+
+
+# For the ExtractMarketingKeywordsNode class, if it's needed
+class ExtractMarketingKeywordsNode(BaseNode[TranscriptAnalysisState, AnalysisResources]):
+    def __init__(self, model_name: str = "default"):
+        super().__init__()
+        self.model_name = model_name
+    
+    async def run(self, ctx: GraphRunContext[TranscriptAnalysisState, AnalysisResources]) -> Status:
+        try:
+            # Get transcript content from context
+            transcript = ctx.state.transcript
+            
+            # Create agent with explicit output schema
+            from pydantic_ai import Agent
+            
+            marketing_keywords_agent = Agent.from_recipe(
+                name="marketing_keywords_extractor",
+                system_prompt=f"""You are an expert at extracting marketing keywords from text.
+                Analyze the transcript and extract marketing keywords that would be valuable for SEO and marketing.
+                Each keyword MUST be returned as an object with 'keyword' and 'relevance' fields.
+                Example format:
+                {{
+                    "keyword": "machine learning framework",
+                    "relevance": 0.95
+                }}
+                The relevance score should be between 0 and 1, with higher values indicating greater relevance.
+                Do not return plain strings - all keywords must be objects with the specified structure.
+                """,
+                user_input="Extract marketing keywords from this transcript: {transcript}",
+                model=self.model_name,
+                output_schema=List[MarketingKeyword],
+            )
+            
+            logging.info(f"Calling extract_marketing_keywords with model {self.model_name}")
+            result = await marketing_keywords_agent.run(
+                transcript=transcript
+            )
+            
+            # Ensure results match schema
+            keywords = result.output
+            
+            # Manual schema compliance check and conversion
+            if keywords and not isinstance(keywords[0], MarketingKeyword):
+                compliant_keywords = []
+                for item in keywords:
+                    if isinstance(item, MarketingKeyword):
+                        compliant_keywords.append(item)
+                    elif isinstance(item, dict):
+                        compliant_keywords.append(MarketingKeyword(**item))
+                    else:
+                        # Assume it's a string
+                        compliant_keywords.append(MarketingKeyword(keyword=str(item), relevance_score=1.0))
+                keywords = compliant_keywords
+            
+            logging.info(f"Extracted {len(keywords)} marketing keywords")
+            ctx.state.marketing_keywords = keywords
+            return Status.SUCCESS
+        except Exception as e:
+            logging.error(f"Error in marketing keyword extraction: {e}")
+            # Provide an empty default
+            ctx.state.marketing_keywords = []
+            return Status.FAILURE

@@ -1,0 +1,10 @@
+Name,Category,Description,Inference Type,Confidence
+Orpheus,Concept,"A figure from ancient Greek mythology, known for his extraordinary musical talents.",direct,1.0
+Text-to-Speech (TTS) Models,Artificial Intelligence,Systems that convert written text into spoken words.,direct,1.0
+LLMMA (Llama Architecture),Artificial Intelligence,A specific model architecture used for TTS models.,direct,1.0
+Torch,Programming Library,A popular open-source machine learning library.,inferred,1.0
+TorchAudio,Programming Library,A Torch library for audio signal processing.,inferred,1.0
+Transformers,Programming Library,A popular open-source library developed by Hugging Face for natural language processing.,inferred,1.0
+Hugging Face,Company/Platform,A company offering a wide range of natural language processing tools and resources.,inferred,1.0
+Mast Compute,Cloud Service,A cloud service offering affordable GPU rentals.,inferred,1.0
+Cameli Kamel,Company/Community,An open-source community focused on building multi-agent infrastructures.,inferred,1.0

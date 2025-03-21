@@ -1,0 +1,1343 @@
+[
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [],
+      "marketing_keywords": [],
+      "business_processes": [],
+      "technical_processes": [],
+      "technologies": [],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "SegmentTranscript"
+    },
+    "start_ts": "2025-03-21T00:42:15.910767Z",
+    "duration": 104.62926325004082,
+    "status": "success",
+    "kind": "node",
+    "id": "SegmentTranscript:fa75ca252b514a22a55ba67d2e61d856"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [],
+      "business_processes": [],
+      "technical_processes": [],
+      "technologies": [],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "ExtractKeywords"
+    },
+    "start_ts": "2025-03-21T00:44:00.549969Z",
+    "duration": 9.227717708970886,
+    "status": "success",
+    "kind": "node",
+    "id": "ExtractKeywords:7f9fd7b79edf4d18bebbbe4fa87111b4"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [
+        "high-quality empathetic text-to-speech generation",
+        "text-to-speech model",
+        "voice cloning",
+        "llama architecture",
+        "Orpheus",
+        "TTS models",
+        "YouTube Video cO1zvHG-eHg",
+        "emotion control",
+        "human level sound"
+      ],
+      "business_processes": [],
+      "technical_processes": [],
+      "technologies": [],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "ExtractBusinessProcesses"
+    },
+    "start_ts": "2025-03-21T00:44:09.782965Z",
+    "duration": 38.26312483398942,
+    "status": "success",
+    "kind": "node",
+    "id": "ExtractBusinessProcesses:d138cf55cf5345e6a4118d9dbe4709d7"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [
+        "high-quality empathetic text-to-speech generation",
+        "text-to-speech model",
+        "voice cloning",
+        "llama architecture",
+        "Orpheus",
+        "TTS models",
+        "YouTube Video cO1zvHG-eHg",
+        "emotion control",
+        "human level sound"
+      ],
+      "business_processes": [
+        {
+          "name": "Model Development",
+          "description": "Developing and fine-tuning a high-quality, empathetic Text-to-Speech (TTS) model based on Llama architecture.",
+          "steps": [
+            "Define the goal of developing a human-level TTS model.",
+            "Select the base model (pre-trained).",
+            "Fine-tune the selected model to deliver human-level speech synthesis.",
+            "Design the model for real-time streaming performance and minimal latency (under 200 milliseconds)."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "TTS models where we give some text prompt and model generates an audio",
+            "so far we have only seen select few models which have produced a real quality human level voice",
+            "that is where it seems the next frontier of these models would be and that is where this new model or 3 billion fine-tuned version is trying to help out",
+            "they have released two models one is pre-trained base model and then they have fine-tuned this model to have a better human sounding speech"
+          ]
+        },
+        {
+          "name": "Model Deployment and Testing",
+          "description": "Installing, configuring, and testing the TTS model locally.",
+          "steps": [
+            "Set up a virtual environment for the project.",
+            "Install necessary audio libraries and prerequisites.",
+            "Clone the Orpheus TTS model repo.",
+            "Download the fine-tuned model from Hugging Face and log in using a free read token.",
+            "Run the TTS model with a test prompt to generate an audio file for evaluation."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "next up we need to um also make sure to install this and for that let me use the pip command",
+            "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries",
+            "now let's run it and we will convert it and then see what it generates there are multiple voices which you can use"
+          ]
+        },
+        {
+          "name": "Model Optimization",
+          "description": "Experimenting with different voices, expressions, and control of speech and emotion characteristics.",
+          "steps": [
+            "Generate an audio file using the default Tara voice for evaluation.",
+            "Evaluate the generated audio quality and expressiveness.",
+            "Attempt to improve the model's performance by fine-tuning for specific voices.",
+            "Test various voices, expressions, and control characteristics with simple text prompts."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "other than that you can clone voices without prior fine-tuning",
+            "you can also control speech and emotion characteristics with simple text",
+            "there are multiple voices which you can use so for example by default it is using voice of tara and there are various other voices which I will also be trying out"
+          ]
+        }
+      ],
+      "technical_processes": [],
+      "technologies": [],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "ExtractTechnicalProcesses"
+    },
+    "start_ts": "2025-03-21T00:44:48.052513Z",
+    "duration": 28.930282249988522,
+    "status": "success",
+    "kind": "node",
+    "id": "ExtractTechnicalProcesses:1d1b2443b3574cb8bfbb23d2f7fc811a"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [
+        "high-quality empathetic text-to-speech generation",
+        "text-to-speech model",
+        "voice cloning",
+        "llama architecture",
+        "Orpheus",
+        "TTS models",
+        "YouTube Video cO1zvHG-eHg",
+        "emotion control",
+        "human level sound"
+      ],
+      "business_processes": [
+        {
+          "name": "Model Development",
+          "description": "Developing and fine-tuning a high-quality, empathetic Text-to-Speech (TTS) model based on Llama architecture.",
+          "steps": [
+            "Define the goal of developing a human-level TTS model.",
+            "Select the base model (pre-trained).",
+            "Fine-tune the selected model to deliver human-level speech synthesis.",
+            "Design the model for real-time streaming performance and minimal latency (under 200 milliseconds)."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "TTS models where we give some text prompt and model generates an audio",
+            "so far we have only seen select few models which have produced a real quality human level voice",
+            "that is where it seems the next frontier of these models would be and that is where this new model or 3 billion fine-tuned version is trying to help out",
+            "they have released two models one is pre-trained base model and then they have fine-tuned this model to have a better human sounding speech"
+          ]
+        },
+        {
+          "name": "Model Deployment and Testing",
+          "description": "Installing, configuring, and testing the TTS model locally.",
+          "steps": [
+            "Set up a virtual environment for the project.",
+            "Install necessary audio libraries and prerequisites.",
+            "Clone the Orpheus TTS model repo.",
+            "Download the fine-tuned model from Hugging Face and log in using a free read token.",
+            "Run the TTS model with a test prompt to generate an audio file for evaluation."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "next up we need to um also make sure to install this and for that let me use the pip command",
+            "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries",
+            "now let's run it and we will convert it and then see what it generates there are multiple voices which you can use"
+          ]
+        },
+        {
+          "name": "Model Optimization",
+          "description": "Experimenting with different voices, expressions, and control of speech and emotion characteristics.",
+          "steps": [
+            "Generate an audio file using the default Tara voice for evaluation.",
+            "Evaluate the generated audio quality and expressiveness.",
+            "Attempt to improve the model's performance by fine-tuning for specific voices.",
+            "Test various voices, expressions, and control characteristics with simple text prompts."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "other than that you can clone voices without prior fine-tuning",
+            "you can also control speech and emotion characteristics with simple text",
+            "there are multiple voices which you can use so for example by default it is using voice of tara and there are various other voices which I will also be trying out"
+          ]
+        }
+      ],
+      "technical_processes": [
+        {
+          "name": "Installing Text-to-Speech Model",
+          "description": "The process of installing a high-quality, empathetic text-to-speech model (Orpheus) locally for real-time applications.",
+          "steps": [
+            "Create a virtual environment.",
+            "Install required audio libraries.",
+            "Install prerequisites such as Torch, Torch Audio, Transformers, and other tidbits.",
+            "Clone the Orpheus repository.",
+            "Install additional packages using pip command.",
+            "Login to Hugging Face and accept terms and conditions of the model.",
+            "Download the Orpheus model from Hugging Face Hub."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "now let's install all the prerequisites",
+            "and now let me install all the prerequisites",
+            "so let's clone the repo of Orpheus",
+            "next up we need to um also make sure to install this"
+          ]
+        },
+        {
+          "name": "Fine-tuning Text-to-Speech Model",
+          "description": "The process of fine-tuning the Orpheus text-to-speech model to deliver human level speech synthesis.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Run the Orpheus TTS model with the specified prompt and generate audio."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "if you look at this code we are importing these libraries",
+            "so we will run it and we will convert it and then see what it generates there",
+            "okay so let's wait for it to generate the audio and now it is processing the prompt which we gave"
+          ]
+        },
+        {
+          "name": "Testing Text-to-Speech Model",
+          "description": "The process of testing the Orpheus text-to-speech model by generating audio with different voices and expressions.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Generate audio using the Orpheus TTS model with the specified prompt and save it as a .wave file.",
+            "Play the generated audio to evaluate its quality and expressiveness.",
+            "Repeat the process with different voices and expressions to test model's capabilities."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "let me play it again",
+            "the way social media has um completely changed how we interact is just wild right",
+            "so let me play it in front of you and we will check it out together",
+            "yeah did you sleep well",
+            "the way social media has and it also just missed the starting of it anyway"
+          ]
+        }
+      ],
+      "technologies": [],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "ExtractTechnologies"
+    },
+    "start_ts": "2025-03-21T00:45:16.992929Z",
+    "duration": 21.987466582970228,
+    "status": "success",
+    "kind": "node",
+    "id": "ExtractTechnologies:e3dd01fe91ce4c5798d7dcc3d853d311"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [
+        "high-quality empathetic text-to-speech generation",
+        "text-to-speech model",
+        "voice cloning",
+        "llama architecture",
+        "Orpheus",
+        "TTS models",
+        "YouTube Video cO1zvHG-eHg",
+        "emotion control",
+        "human level sound"
+      ],
+      "business_processes": [
+        {
+          "name": "Model Development",
+          "description": "Developing and fine-tuning a high-quality, empathetic Text-to-Speech (TTS) model based on Llama architecture.",
+          "steps": [
+            "Define the goal of developing a human-level TTS model.",
+            "Select the base model (pre-trained).",
+            "Fine-tune the selected model to deliver human-level speech synthesis.",
+            "Design the model for real-time streaming performance and minimal latency (under 200 milliseconds)."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "TTS models where we give some text prompt and model generates an audio",
+            "so far we have only seen select few models which have produced a real quality human level voice",
+            "that is where it seems the next frontier of these models would be and that is where this new model or 3 billion fine-tuned version is trying to help out",
+            "they have released two models one is pre-trained base model and then they have fine-tuned this model to have a better human sounding speech"
+          ]
+        },
+        {
+          "name": "Model Deployment and Testing",
+          "description": "Installing, configuring, and testing the TTS model locally.",
+          "steps": [
+            "Set up a virtual environment for the project.",
+            "Install necessary audio libraries and prerequisites.",
+            "Clone the Orpheus TTS model repo.",
+            "Download the fine-tuned model from Hugging Face and log in using a free read token.",
+            "Run the TTS model with a test prompt to generate an audio file for evaluation."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "next up we need to um also make sure to install this and for that let me use the pip command",
+            "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries",
+            "now let's run it and we will convert it and then see what it generates there are multiple voices which you can use"
+          ]
+        },
+        {
+          "name": "Model Optimization",
+          "description": "Experimenting with different voices, expressions, and control of speech and emotion characteristics.",
+          "steps": [
+            "Generate an audio file using the default Tara voice for evaluation.",
+            "Evaluate the generated audio quality and expressiveness.",
+            "Attempt to improve the model's performance by fine-tuning for specific voices.",
+            "Test various voices, expressions, and control characteristics with simple text prompts."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "other than that you can clone voices without prior fine-tuning",
+            "you can also control speech and emotion characteristics with simple text",
+            "there are multiple voices which you can use so for example by default it is using voice of tara and there are various other voices which I will also be trying out"
+          ]
+        }
+      ],
+      "technical_processes": [
+        {
+          "name": "Installing Text-to-Speech Model",
+          "description": "The process of installing a high-quality, empathetic text-to-speech model (Orpheus) locally for real-time applications.",
+          "steps": [
+            "Create a virtual environment.",
+            "Install required audio libraries.",
+            "Install prerequisites such as Torch, Torch Audio, Transformers, and other tidbits.",
+            "Clone the Orpheus repository.",
+            "Install additional packages using pip command.",
+            "Login to Hugging Face and accept terms and conditions of the model.",
+            "Download the Orpheus model from Hugging Face Hub."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "now let's install all the prerequisites",
+            "and now let me install all the prerequisites",
+            "so let's clone the repo of Orpheus",
+            "next up we need to um also make sure to install this"
+          ]
+        },
+        {
+          "name": "Fine-tuning Text-to-Speech Model",
+          "description": "The process of fine-tuning the Orpheus text-to-speech model to deliver human level speech synthesis.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Run the Orpheus TTS model with the specified prompt and generate audio."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "if you look at this code we are importing these libraries",
+            "so we will run it and we will convert it and then see what it generates there",
+            "okay so let's wait for it to generate the audio and now it is processing the prompt which we gave"
+          ]
+        },
+        {
+          "name": "Testing Text-to-Speech Model",
+          "description": "The process of testing the Orpheus text-to-speech model by generating audio with different voices and expressions.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Generate audio using the Orpheus TTS model with the specified prompt and save it as a .wave file.",
+            "Play the generated audio to evaluate its quality and expressiveness.",
+            "Repeat the process with different voices and expressions to test model's capabilities."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "let me play it again",
+            "the way social media has um completely changed how we interact is just wild right",
+            "so let me play it in front of you and we will check it out together",
+            "yeah did you sleep well",
+            "the way social media has and it also just missed the starting of it anyway"
+          ]
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Orpheus",
+          "category": "Concept",
+          "description": "A figure from ancient Greek mythology, known for his extraordinary musical talents.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Text-to-Speech (TTS) Models",
+          "category": "Artificial Intelligence",
+          "description": "Systems that convert written text into spoken words.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "LLMMA (Llama Architecture)",
+          "category": "Artificial Intelligence",
+          "description": "A specific model architecture used for TTS models.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Torch",
+          "category": "Programming Library",
+          "description": "A popular open-source machine learning library.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "TorchAudio",
+          "category": "Programming Library",
+          "description": "A Torch library for audio signal processing.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Transformers",
+          "category": "Programming Library",
+          "description": "A popular open-source library developed by Hugging Face for natural language processing.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Hugging Face",
+          "category": "Company/Platform",
+          "description": "A company offering a wide range of natural language processing tools and resources.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Mast Compute",
+          "category": "Cloud Service",
+          "description": "A cloud service offering affordable GPU rentals.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Cameli Kamel",
+          "category": "Company/Community",
+          "description": "An open-source community focused on building multi-agent infrastructures.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        }
+      ],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "node": {
+      "node_id": "CreateFinalReport"
+    },
+    "start_ts": "2025-03-21T00:45:38.985427Z",
+    "duration": 3.897976583975833,
+    "status": "success",
+    "kind": "node",
+    "id": "CreateFinalReport:aa98e815d7fa418086fc202fa3689aae"
+  },
+  {
+    "state": {
+      "transcript": "hi everyone this is Fad Miraza and I\nwelcome you to the channel orpheus is a\nfigure from ancient Greek mythology\norpheus was a musician poet and a\nprophet who was known for his\nextraordinary musical talents according\nto a myth Orpheus was the son of Apollo\nand Calipi one of the muses\nthat is probably these people have named\ntheir model as Orpheus because what\nOrpheus is trying to do it is trying to\nmimic a human level\nsound if you have been following my\nchannel for some time you know that I\ncover lot of TDS or texttospech models\nwhere we give some text prompt and model\ngenerates an audio so far we have only\nseen select few models which have\nproduced a real quality human level\nvoice and probably CSM is one of those\nthat is where it seems the next frontier\nof these models would be and that is\nwhere this new model or 3 billion\nfine-tuned version is trying to help out\nthey have released two models one is\npre-trained base model and then they\nhave fine-tuned this model to have a\nbetter human sounding speech in this\nvideo we are going to install it locally\nand then we will see how it works this\nmodel has been designed for highquality\nempathetic texttospech generation and it\nis based on llama architecture\nthis model has been fine-tuned to\ndeliver human level speech synthesis\nthat achieves exceptional clarity\nexpressiveness and real-time streaming\nperformance other than that you can\nclone voices without prior fine-tuning\nyou can also control speech and emotion\ncharacteristics with simple text and we\nwill also check it out shortly and it\nhas got very low latency so under or sub\n200 millisecond streaming latency for\nrealtime applications as they have\nshared some data on their model card\nwhich I will drop the link in video's\ndescription so let's try to get it\ninstalled let me also give a huge shout\nout to Mast Compute for sponsoring the\nVM and GPU for this video if you're\nlooking to rent a GPU on very affordable\nprices you can find the link to their\nwebsite in video's description plus I'm\nalso going to give you a coupon code of\n50% discount on a range of\nGPUs so this is my Ubuntu system and\nthis is my GPU card Nvidia RTX 6000 with\n48GPU of VRAM let's start by creating a\nvirtual\nenvironment and now let's install some\nof the audio libraries some of them are\nalready installed so let's wait for it\nand now let me install all the\nprerequisites which include torch torch\naudio transformers and few other\ntidbits and while that happens let me\nalso introduce you to the sponsors of\nthe video who are cameli kamel is an\nopen-source community focused on\nbuilding multi-agent infrastructures for\nfinding the scaling laws of agents with\napplications in data generation task\nautomation and world\nsimulation and now let's get clone the\nrepo of\nOrphus and I have seeded into it next up\nwe need to um also make sure to install\nthis and for that let me use the pip\ncommand and it's a simple package which\nalso installs lot of prerequisites so\nlet's\nwait and that is done next up we need to\nlog into hugging face and accept the\nterms and conditions of this model as it\nis a gated model so for that you would\nneed a free read token from hugging face\nwebsite just do hugging face cli login\nand there just paste your reach token\nwhich you can grab from your profile in\nhugging face let me paste it here and\nthen you can see that I have logged in\nonto\nthe hugging face hub and now we can\ndownload the model now until this point\nall the prerequisites are done and now\nwe need to run the model so let me\nquickly show you the code where I will\nbe running the model after downloading\nit so I'm just going to open the code in\nmy VS code here and you can find that\ncode in the repo or on the model card\nwhich you can find the link in video\ndescription so if you look at this code\nwe are importing these libraries we are\nspecifying our Orpheus TTS model and\nfrom there this is a prompt or text we\nwant to convert it into audio now if you\nlook at this prompt it is saying man the\nway social media has and then there is\nsome expression and then completely\nchange it is just talking like this and\nwhat not so we will run it and we will\nconvert it and then see what it\ngenerates there are multiple voices\nwhich you can use so for example by\ndefault it is using voice of tara and\nthere are various other voices which I\nwill also be trying out and this is the\noutput dotwave file which is it is going\nto create my uh current working\ndirectory and this is where it is\nsetting up some frames and then\ngenerating the audio with the help of\nmodel after chunking it so let me run\nthis code and then we will see what it\ndoes let me clear the screen and then\nlet's simply run this\napp.py now when the first time you would\nrun it it is going to download the model\nand it will downcast\nit and there you go the model is being\ndownloaded as you can see let's wait for\nit and the model is loaded onto our GPU\nand you can see the size is just over 7\ngig of VRAM\nokay so let's wait for it to generate\nthe\naudio and now it is processing the\nprompt which we gave\nit and it has generated this uh 10 sec\n10.33 seconds of audio as you can\nsee so let me play it so let's go to the\nroot of the repo this is output.wave let\nme open it\nsocial media has\num completely changed how we is just\nwild right\nnot bad right so let me play it again\nthe way social media has\num completely changed how we interact is\njust wild right\nyeah so it has didn't complete the whole\nof it but still I think good enough okay\nso let's generate few\nmore so maybe this is happening because\nwe didn't specify the max token so let\nme do that but sometimes what happens is\nthese DTS models have a strict\ngeneration limit but anyway so let me\nput it here and then I will just delete\nthis existing file so that because we\nare going to generate another one and\nI'm I have already saved it and I will\nrun that script again good thing is that\nit is not going to download the model\nagain as it is already loaded so let's\nwait for it to generate the\naudio model is loaded and now it is\ngoing to generate the\naudio so the audio has been generated\nlet me play this doesn't seem like it\nhas much made much difference but anyway\nI'll play it in front of you and we will\ncheck it out together this is a new file\nthe way social media has um completely\nchanged how we interact is just wild\nright\nyeah you see so I think this model has\nuh just generates until 10 second\naudio okay so that is okay\nthe way social media has and it also\njust missed the starting of it anyway\nbut this is uh voice of\nTara okay now what I'm going to do I'm\njust going to try out different voices\nlike I'm going to try the voice of Zach\nnow at line number 20 and I have changed\nthis prompt with some of the expression\nlike here there is a Jean so let's see\nhow it goes i'm going to run this and\nthen we will see what it\ndo and it has created the audio let's\ncheck it out\nyeah did you sleep\nwell\nyeah did you sleep\nwell well not really i think that is a\nmiss we would say what do you think okay\nlet's try out one more\nso next up I'm giving it this Zoe's\nvoice and I'm ask this is a prompt like\noh did that movie really make you cry\nsniffle you are too sensitive so it is\nworking should be done\nsoon so the audio is done let's try it\nout\nreally\ni sure\nsensitive i\nreally sure sensitive\nno I don't really I don't think so\nthat's a good one\nokay so let's do one last\ntry so I'm just There are multiple\nvoices but I'll just go back to the\nZara's voice so again there is some\nexpression of gasping and then there is\na double dash let's see how this one\ngoes first one was good but rest of them\nare really disappointing I\nbelieve and it has generated another one\nso let's try it\nout wait you're telling my\nphone\nseriously wait you're telling off my\nphone\nseriously wait telling me you lost my\nphone\nseriously wait telling me you lost my\nphone seriously so this one is really\nreally good so I think the finetuning on\nTerara's Tara's voice is much much\nbetter than the rest of the lot that is\nwhat I am getting because in her voice\nmultiple expressions are quite good not\nbad at all and there are some you know\nissues with the quality and stuff but we\ncan ignore them so I believe um maybe it\nneeds more finetuning for the other\nvoices so if you're looking to use it\nmaybe just go with the Tara's voice at\nthe moment and just 10 second now I'm\nplanning more videos on this\ntool and model especially around\nfinetuning so please keep checking the\nchannel and that will be out very soon\nso let me know in the comments what you\nthink about this new model if you like\nthe content please consider subscribing\nto the channel if you're already\nsubscribed please share it among your\nnetwork as it helps a lot thank you for\nwatching",
+      "video_title": "YouTube Video cO1zvHG-eHg",
+      "video_id": "cO1zvHG-eHg",
+      "segments": [
+        {
+          "topic": "Introduction",
+          "content": "hi everyone this is Fad Miraza and I welcome you to the channel. Orpheus is a figure from ancient Greek mythology. Orpheus was a musician, poet, and a prophet who was known for his extraordinary musical talents. According to a myth, Orpheus was the son of Apollo and Calipi one of the muses. That is probably why they have named their model as Orpheus because what Orpheus is trying to do is mimic human level sound. If you have been following my channel for some time, you know that I cover a lot of TTS or text-to-speech models where we give some text prompt and the model generates an audio. So far we have only seen select few models which have produced real quality human level voice, and probably CSM is one of those. That is where it seems the next frontier of these models would be. This new model or 3 billion fine-tuned version is trying to help out. They have released two models – one is pre-trained base model, and then they have fine-tuned this model to have a better human sounding speech. In this video we are going to install it locally and then we will see how it works."
+        },
+        {
+          "topic": "Background on Orpheus",
+          "content": "Orpheus is a figure from ancient Greek mythology. He was a musician, poet and prophet who was known for his extraordinary musical talents. According to the myth, Orpheus was the son of Apollo and Calipi, one of the muses. The model in this channel has been named Orpheus as it is trying to mimic human level sound. It is a new text-to-speech model that has been fine-tuned for high quality empathetic text-to-speech generation and delivers human level speech synthesis with exceptional clarity, expressiveness and real-time streaming performance."
+        },
+        {
+          "topic": "Introduction to the new model",
+          "content": "This is a video about a new model named Orpheus, which is designed for high-quality empathetic text-to-speech generation. The model has been fine-tuned to deliver human-level speech synthesis with exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and has low latency (under 200 milliseconds). The video demonstrates how to install the model locally and shows some examples of its output."
+        },
+        {
+          "topic": "Installation Process",
+          "content": "In this video, we will install locally a new model named Orpheus which is designed for high-quality empathetic text-to-speech generation and is based on llama architecture. The prerequisites include audio libraries such as torch, torch audio, transformers, and others. We will also need to download the model from hugging face and run it using a script. After installing and downloading the model, we will generate text-to-speech audio using the model."
+        },
+        {
+          "topic": "Demonstration of the Model in Action",
+          "content": "Orpheus is a model designed for high-quality, empathetic text-to-speech generation. It has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. The model has low latency (sub 200 millisecond streaming latency for real-time applications). In this video, the user will install it locally and demonstrate how it works. The code used to run the model can be found in the repo or on the model card linked in the video description."
+        },
+        {
+          "topic": "Model Capabilities",
+          "content": "The model, Orpheus, is designed for high-quality, empathetic text-to-speech generation. It is based on llama architecture and has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness, and real-time streaming performance. Other features include the ability to clone voices without prior fine-tuning, control speech and emotion characteristics with simple text, and low latency (under 200 milliseconds) for real-time applications."
+        },
+        {
+          "topic": "Voice Cloning and Emotion Control",
+          "content": "This new model is trying to help out in the next frontier of TTS models. It has been designed for high-quality empathetic text-to-speech generation and it is based on llama architecture. The model has been fine-tuned to deliver human level speech synthesis that achieves exceptional clarity, expressiveness and real-time streaming performance. Besides voice cloning without prior fine-tuning, it allows controlling speech and emotion characteristics with simple text."
+        },
+        {
+          "topic": "Comparison of Different Voices",
+          "content": "The section discusses a new model named Orpheus, which is designed for high-quality, empathetic text-to-speech generation and aims to mimic human level sound. The model has been fine-tuned for better human-sounding speech synthesis and offers low latency streaming performance. It can clone voices without prior fine-tuning and control speech and emotion characteristics with simple text. In the comparison, it is suggested that the voice of 'Tara' seems to have better finetuning than other voices tested."
+        }
+      ],
+      "marketing_keywords": [
+        "high-quality empathetic text-to-speech generation",
+        "text-to-speech model",
+        "voice cloning",
+        "llama architecture",
+        "Orpheus",
+        "TTS models",
+        "YouTube Video cO1zvHG-eHg",
+        "emotion control",
+        "human level sound"
+      ],
+      "business_processes": [
+        {
+          "name": "Model Development",
+          "description": "Developing and fine-tuning a high-quality, empathetic Text-to-Speech (TTS) model based on Llama architecture.",
+          "steps": [
+            "Define the goal of developing a human-level TTS model.",
+            "Select the base model (pre-trained).",
+            "Fine-tune the selected model to deliver human-level speech synthesis.",
+            "Design the model for real-time streaming performance and minimal latency (under 200 milliseconds)."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "TTS models where we give some text prompt and model generates an audio",
+            "so far we have only seen select few models which have produced a real quality human level voice",
+            "that is where it seems the next frontier of these models would be and that is where this new model or 3 billion fine-tuned version is trying to help out",
+            "they have released two models one is pre-trained base model and then they have fine-tuned this model to have a better human sounding speech"
+          ]
+        },
+        {
+          "name": "Model Deployment and Testing",
+          "description": "Installing, configuring, and testing the TTS model locally.",
+          "steps": [
+            "Set up a virtual environment for the project.",
+            "Install necessary audio libraries and prerequisites.",
+            "Clone the Orpheus TTS model repo.",
+            "Download the fine-tuned model from Hugging Face and log in using a free read token.",
+            "Run the TTS model with a test prompt to generate an audio file for evaluation."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "next up we need to um also make sure to install this and for that let me use the pip command",
+            "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries",
+            "now let's run it and we will convert it and then see what it generates there are multiple voices which you can use"
+          ]
+        },
+        {
+          "name": "Model Optimization",
+          "description": "Experimenting with different voices, expressions, and control of speech and emotion characteristics.",
+          "steps": [
+            "Generate an audio file using the default Tara voice for evaluation.",
+            "Evaluate the generated audio quality and expressiveness.",
+            "Attempt to improve the model's performance by fine-tuning for specific voices.",
+            "Test various voices, expressions, and control characteristics with simple text prompts."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "other than that you can clone voices without prior fine-tuning",
+            "you can also control speech and emotion characteristics with simple text",
+            "there are multiple voices which you can use so for example by default it is using voice of tara and there are various other voices which I will also be trying out"
+          ]
+        }
+      ],
+      "technical_processes": [
+        {
+          "name": "Installing Text-to-Speech Model",
+          "description": "The process of installing a high-quality, empathetic text-to-speech model (Orpheus) locally for real-time applications.",
+          "steps": [
+            "Create a virtual environment.",
+            "Install required audio libraries.",
+            "Install prerequisites such as Torch, Torch Audio, Transformers, and other tidbits.",
+            "Clone the Orpheus repository.",
+            "Install additional packages using pip command.",
+            "Login to Hugging Face and accept terms and conditions of the model.",
+            "Download the Orpheus model from Hugging Face Hub."
+          ],
+          "inference_type": "direct",
+          "transcript_references": [
+            "let's try to get it installed",
+            "now let's install all the prerequisites",
+            "and now let me install all the prerequisites",
+            "so let's clone the repo of Orpheus",
+            "next up we need to um also make sure to install this"
+          ]
+        },
+        {
+          "name": "Fine-tuning Text-to-Speech Model",
+          "description": "The process of fine-tuning the Orpheus text-to-speech model to deliver human level speech synthesis.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Run the Orpheus TTS model with the specified prompt and generate audio."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "if you look at this code we are importing these libraries",
+            "so we will run it and we will convert it and then see what it generates there",
+            "okay so let's wait for it to generate the audio and now it is processing the prompt which we gave"
+          ]
+        },
+        {
+          "name": "Testing Text-to-Speech Model",
+          "description": "The process of testing the Orpheus text-to-speech model by generating audio with different voices and expressions.",
+          "steps": [
+            "Specify a prompt or text to convert into audio.",
+            "Generate audio using the Orpheus TTS model with the specified prompt and save it as a .wave file.",
+            "Play the generated audio to evaluate its quality and expressiveness.",
+            "Repeat the process with different voices and expressions to test model's capabilities."
+          ],
+          "inference_type": "inferred",
+          "transcript_references": [
+            "let me play it again",
+            "the way social media has um completely changed how we interact is just wild right",
+            "so let me play it in front of you and we will check it out together",
+            "yeah did you sleep well",
+            "the way social media has and it also just missed the starting of it anyway"
+          ]
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Orpheus",
+          "category": "Concept",
+          "description": "A figure from ancient Greek mythology, known for his extraordinary musical talents.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Text-to-Speech (TTS) Models",
+          "category": "Artificial Intelligence",
+          "description": "Systems that convert written text into spoken words.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "LLMMA (Llama Architecture)",
+          "category": "Artificial Intelligence",
+          "description": "A specific model architecture used for TTS models.",
+          "inference_type": "direct",
+          "transcript_references": [
+            "Video title: YouTube Video cO1zvHG-eHg",
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Torch",
+          "category": "Programming Library",
+          "description": "A popular open-source machine learning library.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "TorchAudio",
+          "category": "Programming Library",
+          "description": "A Torch library for audio signal processing.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Transformers",
+          "category": "Programming Library",
+          "description": "A popular open-source library developed by Hugging Face for natural language processing.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Hugging Face",
+          "category": "Company/Platform",
+          "description": "A company offering a wide range of natural language processing tools and resources.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Mast Compute",
+          "category": "Cloud Service",
+          "description": "A cloud service offering affordable GPU rentals.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        },
+        {
+          "name": "Cameli Kamel",
+          "category": "Company/Community",
+          "description": "An open-source community focused on building multi-agent infrastructures.",
+          "inference_type": "inferred",
+          "transcript_references": [
+            "TRANSCRIPT"
+          ]
+        }
+      ],
+      "start_time": "2025-03-21T08:42:15.887178",
+      "segmentation_agent_messages": [],
+      "keyword_agent_messages": [],
+      "business_process_agent_messages": [],
+      "tech_process_agent_messages": [],
+      "technology_agent_messages": []
+    },
+    "result": {
+      "data": {
+        "video_title": "YouTube Video cO1zvHG-eHg",
+        "video_id": "cO1zvHG-eHg",
+        "marketing_keywords": [
+          {
+            "keyword": "high-quality empathetic text-to-speech generation",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "text-to-speech model",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "voice cloning",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "llama architecture",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "Orpheus",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "TTS models",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "YouTube Video cO1zvHG-eHg",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "emotion control",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          },
+          {
+            "keyword": "human level sound",
+            "relevance_score": 1.0,
+            "context": "From transcript",
+            "frequency": 1
+          }
+        ],
+        "business_processes": [
+          {
+            "name": "Model Development",
+            "description": "Developing and fine-tuning a high-quality, empathetic Text-to-Speech (TTS) model based on Llama architecture.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Define the goal of developing a human-level TTS model.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Select the base model (pre-trained).",
+                "order": 2,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Fine-tune the selected model to deliver human-level speech synthesis.",
+                "order": 3,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Design the model for real-time streaming performance and minimal latency (under 200 milliseconds).",
+                "order": 4,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "TTS models where we give some text prompt and model generates an audio",
+              "so far we have only seen select few models which have produced a real quality human level voice",
+              "that is where it seems the next frontier of these models would be and that is where this new model or 3 billion fine-tuned version is trying to help out",
+              "they have released two models one is pre-trained base model and then they have fine-tuned this model to have a better human sounding speech"
+            ]
+          },
+          {
+            "name": "Model Deployment and Testing",
+            "description": "Installing, configuring, and testing the TTS model locally.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Set up a virtual environment for the project.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Install necessary audio libraries and prerequisites.",
+                "order": 2,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Clone the Orpheus TTS model repo.",
+                "order": 3,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Download the fine-tuned model from Hugging Face and log in using a free read token.",
+                "order": 4,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Run the TTS model with a test prompt to generate an audio file for evaluation.",
+                "order": 5,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "let's try to get it installed",
+              "next up we need to um also make sure to install this and for that let me use the pip command",
+              "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries",
+              "now let's run it and we will convert it and then see what it generates there are multiple voices which you can use"
+            ]
+          },
+          {
+            "name": "Model Optimization",
+            "description": "Experimenting with different voices, expressions, and control of speech and emotion characteristics.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Generate an audio file using the default Tara voice for evaluation.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Evaluate the generated audio quality and expressiveness.",
+                "order": 2,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Attempt to improve the model's performance by fine-tuning for specific voices.",
+                "order": 3,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Test various voices, expressions, and control characteristics with simple text prompts.",
+                "order": 4,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "other than that you can clone voices without prior fine-tuning",
+              "you can also control speech and emotion characteristics with simple text",
+              "there are multiple voices which you can use so for example by default it is using voice of tara and there are various other voices which I will also be trying out"
+            ]
+          }
+        ],
+        "technical_processes": [
+          {
+            "name": "Installing Text-to-Speech Model",
+            "description": "The process of installing a high-quality, empathetic text-to-speech model (Orpheus) locally for real-time applications.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Create a virtual environment.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Install required audio libraries.",
+                "order": 2,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Install prerequisites such as Torch, Torch Audio, Transformers, and other tidbits.",
+                "order": 3,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Clone the Orpheus repository.",
+                "order": 4,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Install additional packages using pip command.",
+                "order": 5,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Login to Hugging Face and accept terms and conditions of the model.",
+                "order": 6,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Download the Orpheus model from Hugging Face Hub.",
+                "order": 7,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "let's try to get it installed",
+              "now let's install all the prerequisites",
+              "and now let me install all the prerequisites",
+              "so let's clone the repo of Orpheus",
+              "next up we need to um also make sure to install this"
+            ]
+          },
+          {
+            "name": "Fine-tuning Text-to-Speech Model",
+            "description": "The process of fine-tuning the Orpheus text-to-speech model to deliver human level speech synthesis.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Specify a prompt or text to convert into audio.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Run the Orpheus TTS model with the specified prompt and generate audio.",
+                "order": 2,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "if you look at this code we are importing these libraries",
+              "so we will run it and we will convert it and then see what it generates there",
+              "okay so let's wait for it to generate the audio and now it is processing the prompt which we gave"
+            ]
+          },
+          {
+            "name": "Testing Text-to-Speech Model",
+            "description": "The process of testing the Orpheus text-to-speech model by generating audio with different voices and expressions.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "steps": [
+              {
+                "description": "Specify a prompt or text to convert into audio.",
+                "order": 1,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Generate audio using the Orpheus TTS model with the specified prompt and save it as a .wave file.",
+                "order": 2,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Play the generated audio to evaluate its quality and expressiveness.",
+                "order": 3,
+                "transcript_reference": ""
+              },
+              {
+                "description": "Repeat the process with different voices and expressions to test model's capabilities.",
+                "order": 4,
+                "transcript_reference": ""
+              }
+            ],
+            "transcript_references": [
+              "let me play it again",
+              "the way social media has um completely changed how we interact is just wild right",
+              "so let me play it in front of you and we will check it out together",
+              "yeah did you sleep well",
+              "the way social media has and it also just missed the starting of it anyway"
+            ]
+          }
+        ],
+        "technologies": [
+          {
+            "name": "Orpheus",
+            "category": "Concept",
+            "description": "A figure from ancient Greek mythology, known for his extraordinary musical talents.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "Video title: YouTube Video cO1zvHG-eHg",
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Text-to-Speech (TTS) Models",
+            "category": "Artificial Intelligence",
+            "description": "Systems that convert written text into spoken words.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "Video title: YouTube Video cO1zvHG-eHg",
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "LLMMA (Llama Architecture)",
+            "category": "Artificial Intelligence",
+            "description": "A specific model architecture used for TTS models.",
+            "inference_type": "direct",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "Video title: YouTube Video cO1zvHG-eHg",
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Torch",
+            "category": "Programming Library",
+            "description": "A popular open-source machine learning library.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "TorchAudio",
+            "category": "Programming Library",
+            "description": "A Torch library for audio signal processing.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Transformers",
+            "category": "Programming Library",
+            "description": "A popular open-source library developed by Hugging Face for natural language processing.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Hugging Face",
+            "category": "Company/Platform",
+            "description": "A company offering a wide range of natural language processing tools and resources.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Mast Compute",
+            "category": "Cloud Service",
+            "description": "A cloud service offering affordable GPU rentals.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          },
+          {
+            "name": "Cameli Kamel",
+            "category": "Company/Community",
+            "description": "An open-source community focused on building multi-agent infrastructures.",
+            "inference_type": "inferred",
+            "confidence_score": 1.0,
+            "transcript_references": [
+              "TRANSCRIPT"
+            ]
+          }
+        ],
+        "summary": "The video focuses on the development, deployment, and optimization of a high-quality empathetic Text-to-Speech (TTS) model named Orpheus, based on Llama architecture (LLMMA). The process involves installing, fine-tuning, and testing the model locally for real-time applications. Emphasis is placed on delivering human level speech synthesis and controlling various voices, expressions, and emotional characteristics. Technologies used in this project include Torch, TorchAudio, Transformers, Hugging Face platform, Mast Compute cloud service, and Cameli Kamel community."
+      }
+    },
+    "ts": "2025-03-21T00:45:42.889604Z",
+    "kind": "end",
+    "id": "end:3c9186374297435fa0ff23892ddad277"
+  }
+]
