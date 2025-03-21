@@ -1,0 +1,9 @@
+Name,Category,Description,Inference Type,Confidence
+Orpheus,Mythological Figure,"A figure from ancient Greek mythology, known for his extraordinary musical talents.",direct,1.0
+TDS (Text-to-Speech) model,Artificial Intelligence,A model that generates an audio from given text prompts.,direct,1.0
+CSM,TTS Model (Text-to-Speech),"A specific TTS model that is known for producing high-quality, human level voice.",direct,1.0
+Llama Architecture,TTS Model (Text-to-Speech),An architecture used in the design of TTS models.,direct,1.0
+Transformers,Machine Learning Library,"A popular machine learning library developed by the developers of the Transformer model, used for tasks such as natural language processing.",inferred,1.0
+Hugging Face,Machine Learning Platform,A popular open-source machine learning platform focused on natural language processing tasks.,inferred,1.0
+Mast Compute,Cloud Service (GPU Rentals),A service offering GPU rentals at an affordable price.,inferred,1.0
+Cameli Kamel,Open-Source Community,"An open-source community focused on building multi-agent infrastructures for data generation, task automation, and world simulation.",inferred,1.0

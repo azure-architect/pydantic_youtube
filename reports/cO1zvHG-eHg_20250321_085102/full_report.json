@@ -1,0 +1,336 @@
+{
+  "video_title": "YouTube Video cO1zvHG-eHg",
+  "video_id": "cO1zvHG-eHg",
+  "marketing_keywords": [
+    {
+      "keyword": "Orpheus",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "text-to-speech model",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "llama architecture",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "real-time streaming performance",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "human level sound",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "high-quality empathetic TTS generation",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "gated model",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "control speech and emotion characteristics",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "voice cloning",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "low latency",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    }
+  ],
+  "business_processes": [
+    {
+      "name": "Text-to-Speech Model Installation",
+      "description": "The process of downloading, configuring, and installing a text-to-speech model on a local system.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Create a virtual environment",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Install audio libraries",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Clone the Orpheus TTS repo",
+          "order": 3,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Install prerequisites using pip",
+          "order": 4,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Log into Hugging Face and accept terms and conditions",
+          "order": 5,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Download the text-to-speech model from Hugging Face",
+          "order": 6,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "let's try to get it installed",
+        "and now let me install all the prerequisites",
+        "so let's clone the repo of Orpheus",
+        "let's also introduce you to the sponsors of the video",
+        "now let's get clone the repo of Orpheus"
+      ]
+    },
+    {
+      "name": "Text-to-Speech Model Configuration",
+      "description": "The process of setting up and configuring the text-to-speech model to generate audio from a given text prompt.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Specify the Orpheus TTS model",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Set the text prompt for audio conversion",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Run the configured model to generate audio",
+          "order": 3,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "we will convert it and then see what it generates there are multiple voices which you can use",
+        "so we will run it and we will convert it and then see what it generates there",
+        "app.py now when the first time you would run it it is going to download the model"
+      ]
+    },
+    {
+      "name": "Text-to-Speech Model Evaluation",
+      "description": "The process of evaluating and testing the generated audio quality, voice clarity, and overall performance of the text-to-speech model.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Generate audio for a given text prompt",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Play the generated audio to verify its quality",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Repeat the process with different voices and text prompts",
+          "order": 3,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "let me play it again social media has um completely changed how we interact is just wild right",
+        "yeah did you sleep well yeah did you sleep well well not really i think that is a miss",
+        "so let's try it out social media has and it also just missed the starting of it anyway but this is uh voice of Tara okay"
+      ]
+    }
+  ],
+  "technical_processes": [
+    {
+      "name": "Installing software dependencies",
+      "description": "The process of installing required libraries and packages for the project, including torch, torch-audio, transformers, and others.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Wait for some of the prerequisites to be installed (already installed)",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Install all the required packages using 'pip command'",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "let's start by creating a virtual environment and now let's install some of the audio libraries some of them are already installed so let's wait for it",
+        "and now let me install all the prerequisites which include torch torch-audio transformers and few other tidbits"
+      ]
+    },
+    {
+      "name": "Downloading and Loading Model onto GPU",
+      "description": "The process of downloading and loading a pre-trained model onto the local machine's GPU.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Clone the Orpheus repository",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Install necessary packages to access Hugging Face API",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Login to Hugging Face and accept terms & conditions",
+          "order": 3,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Download the model from Hugging Face using 'pip command'",
+          "order": 4,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Load the model onto GPU for processing",
+          "order": 5,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "now let's get clone the repo of Orpheus and I have seeded into it",
+        "next up we need to um also make sure to install this and for that let me use the pip command",
+        "hugging face cli login and there just paste your reach token which you can grab from your profile in hugging face let me paste it here",
+        "now until this point all the prerequisites are done and now we need to run the model so let me quickly show you the code where I will be running the model"
+      ]
+    },
+    {
+      "name": "Text-to-Speech Model Execution",
+      "description": "The process of converting textual prompts into audio using a text-to-speech (TTS) model.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Specify the TTS model, prompt, and desired voice",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Generate audio from the model with specified parameters",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "so I'm just going to open the code in my VS code here and you can find that code in the repo or on the model card which you can find the link in video description so if you look at this code we are importing these libraries we are specifying our Orpheus TTS model and from there this is a prompt or text we want to convert it into audio now if you look at this prompt it is saying man the way social media has and then there is some expression and then completely change it is just talking like this and what not so we will run it and we will convert it and then see what it generates"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Orpheus",
+      "category": "Mythological Figure",
+      "description": "A figure from ancient Greek mythology, known for his extraordinary musical talents.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "TRANSCRIPT: hi everyone this is Fad Miraza and I welcome you to the channel orpheus is a figure from ancient Greek mythology"
+      ]
+    },
+    {
+      "name": "TDS (Text-to-Speech) model",
+      "category": "Artificial Intelligence",
+      "description": "A model that generates an audio from given text prompts.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "this is Fad Miraza and I welcome you to the channel orpheus is a figure from ancient Greek mythology \n\norpheus was a musician poet and a prophet who was known for his extraordinary musical talents according to a myth Orpheus was the son of Apollo and Calipi one of the muses that is probably these people have named their model as Orpheus because what Orpheus is trying to do it is trying to mimic a human level \n\n if you have been following my channel for some time you know that I cover lot of TDS or texttospech models where we give some text prompt and model generates an audio"
+      ]
+    },
+    {
+      "name": "CSM",
+      "category": "TTS Model (Text-to-Speech)",
+      "description": "A specific TTS model that is known for producing high-quality, human level voice.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "CSM is one of those"
+      ]
+    },
+    {
+      "name": "Llama Architecture",
+      "category": "TTS Model (Text-to-Speech)",
+      "description": "An architecture used in the design of TTS models.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "this model has been designed for highquality empathetic texttospech generation and it is based on llama architecture"
+      ]
+    },
+    {
+      "name": "Transformers",
+      "category": "Machine Learning Library",
+      "description": "A popular machine learning library developed by the developers of the Transformer model, used for tasks such as natural language processing.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "let's install some of the audio libraries some of them are already installed so let's wait for it and now let me install all the prerequisites which include torch torch audio transformers"
+      ]
+    },
+    {
+      "name": "Hugging Face",
+      "category": "Machine Learning Platform",
+      "description": "A popular open-source machine learning platform focused on natural language processing tasks.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "next up we need to um also make sure to install this and for that let me use the pip command and it's a simple package which also installs lot of prerequisites so let's wait and that is done next up we need to log into hugging face and accept the terms and conditions of this model as it is a gated model so for that you would need a free read token from hugging face website just do hugging face cli login"
+      ]
+    },
+    {
+      "name": "Mast Compute",
+      "category": "Cloud Service (GPU Rentals)",
+      "description": "A service offering GPU rentals at an affordable price.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "I'm also going to give a huge shout out to Mast Compute for sponsoring the VM and GPU for this video if you're looking to rent a GPU on very affordable prices you can find the link to their website in video's description plus I'm also going to give you a coupon code of 50% discount on a range of GPUs"
+      ]
+    },
+    {
+      "name": "Cameli Kamel",
+      "category": "Open-Source Community",
+      "description": "An open-source community focused on building multi-agent infrastructures for data generation, task automation, and world simulation.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "cameli kamel is an open-source community focused on building multi-agent infrastructures for finding the scaling laws of agents with applications in data generation task automation and world simulation"
+      ]
+    }
+  ],
+  "summary": "The analyzed YouTube video (cO1zvHG-eHg) focuses on the implementation and evaluation of a high-quality, empathetic Text-to-Speech (TTS) model called Orpheus, based on Llama Architecture. The video details three main business processes: text-to-speech model installation, configuration, and evaluation. Technically, it involves installing software dependencies, downloading and loading the pre-trained model onto a GPU, and executing the model to convert textual prompts into audio using Torch, Torch-Audio, Transformers, and other libraries. The video emphasizes real-time streaming performance, human-level sound, control over speech and emotion characteristics, voice cloning, and low latency. Additional technologies mentioned include Hugging Face, Mast Compute, Cameli Kamel community, and the TDS (Text-to-Speech) model itself."
+}

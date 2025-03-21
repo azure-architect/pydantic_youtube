@@ -1,18 +1,22 @@
+# Updated transcript_analysis_models.py
 from pydantic import BaseModel, Field
 from typing import List, Dict, Optional, Any, Union
 
 class ProcessStep(BaseModel):
+    """Model for a step in a process"""
     description: str
     order: int
     transcript_reference: str = ""
 
 class MarketingKeyword(BaseModel):
+    """Model for a marketing keyword extracted from transcript"""
     keyword: str
     relevance_score: float = 1.0
     context: str = ""
     frequency: int = 1
 
 class BusinessProcessModel(BaseModel):
+    """Model for a business process identified in transcript"""
     name: str
     description: str
     inference_type: str  # "DIRECT" or "INFERRED"
@@ -21,6 +25,7 @@ class BusinessProcessModel(BaseModel):
     transcript_references: List[str] = []
 
 class TechnicalProcessModel(BaseModel):
+    """Model for a technical process identified in transcript"""
     name: str
     description: str
     inference_type: str  # "DIRECT" or "INFERRED"
@@ -29,6 +34,7 @@ class TechnicalProcessModel(BaseModel):
     transcript_references: List[str] = []
 
 class TechnologyModel(BaseModel):
+    """Model for a technology mentioned in transcript"""
     name: str
     category: str
     description: str
@@ -37,6 +43,7 @@ class TechnologyModel(BaseModel):
     transcript_references: List[str] = []
 
 class TranscriptAnalysisReport(BaseModel):
+    """Complete analysis report model"""
     video_title: str
     video_id: str
     marketing_keywords: List[MarketingKeyword] = []
@@ -46,32 +53,40 @@ class TranscriptAnalysisReport(BaseModel):
     summary: str = ""
 
 class TranscriptSegment(BaseModel):
+    """Model for a segment of the transcript"""
     topic: str
     content: str
+    start_time_approx: Optional[str] = None  # Optional timestamp
 
 class SegmentStats(BaseModel):
+    """Statistics about a transcript segment"""
     segment_id: str
     word_count: int
     sentence_count: int
     avg_word_length: float = 0.0
     
 class TopicList(BaseModel):
+    """List of topics for segmentation first step"""
     sections: List[str]
 
 class TranscriptAnalysisResult(BaseModel):
+    """Complete analysis result including segments and stats"""
     segments: List[TranscriptSegment]
     stats: List[SegmentStats]
     summary: str
 
-# Models for function calling
+# Models specifically for function calling with Ollama
 class KeywordList(BaseModel):
+    """Model for extracting a list of keywords"""
     keywords: List[str]
 
 class BusinessProcessStep(BaseModel):
+    """Step in a business process for function calling"""
     description: str
     order: int
     
 class BusinessProcessExtraction(BaseModel):
+    """Business process extraction model for function calling"""
     name: str
     description: str
     steps: List[BusinessProcessStep]
@@ -79,9 +94,11 @@ class BusinessProcessExtraction(BaseModel):
     transcript_references: List[str]
     
 class BusinessProcessList(BaseModel):
+    """List of business processes for function calling"""
     processes: List[BusinessProcessExtraction]
 
 class TechnologyExtraction(BaseModel):
+    """Technology extraction model for function calling"""
     name: str
     category: str
     description: str
@@ -89,7 +106,9 @@ class TechnologyExtraction(BaseModel):
     transcript_references: List[str]
     
 class TechnologyList(BaseModel):
+    """List of technologies for function calling"""
     technologies: List[TechnologyExtraction]
 
 class SummaryGeneration(BaseModel):
+    """Summary generation model for function calling"""
     summary: str

@@ -1,12 +1,13 @@
-# state/transcript_analysis_state.py
+# Updated transcript_analysis_state.py
 import json
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional, Set
+from typing import List, Dict, Optional, Set, Any
 from datetime import datetime
 from enum import Enum
 import httpx
 
 class InferenceType(str, Enum):
+    """Type of inference used to extract information"""
     DIRECT = "direct"
     INFERRED = "inferred"
     
@@ -59,12 +60,22 @@ class TranscriptAnalysisState:
     technologies: List[Technology] = field(default_factory=list)
     start_time: datetime = field(default_factory=datetime.now)
     
+    # Added fields for segment statistics
+    segment_stats: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    
+    # Added field for analysis summary
+    summary: str = ""
+    
     # Message histories for agents
     segmentation_agent_messages: List = field(default_factory=list)
     keyword_agent_messages: List = field(default_factory=list)
     business_process_agent_messages: List = field(default_factory=list)
     tech_process_agent_messages: List = field(default_factory=list)
     technology_agent_messages: List = field(default_factory=list)
+    
+    # Track the status of function calling attempts
+    function_call_successes: Dict[str, bool] = field(default_factory=dict)
+    function_call_errors: Dict[str, str] = field(default_factory=dict)
 
 @dataclass
 class AnalysisResources:
@@ -74,3 +85,7 @@ class AnalysisResources:
     model: str = "mistral:latest-32"  # Default model to use
     tech_taxonomy: Optional[dict] = None  # Optional reference data for technology classification
     marketing_keywords_db: Optional[List[str]] = None  # Optional reference marketing keywords
+    # Added fields for function calling settings
+    context_window_size: int = 32768
+    temperature: float = 0.1  # Lower temperature for more deterministic outputs
+    max_tokens: Optional[int] = None  # Maximum tokens in the response
