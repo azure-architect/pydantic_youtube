@@ -1,0 +1,7 @@
+Name,Category,Description,Inference Type,Confidence
+Upwork,platform,"A freelance platform where people can offer their services, including AI services.",direct,1.0
+Replet,no-code development platform,A no-code development platform used to build apps and automate workflows.,direct,1.0
+Air Table,database management system,A cloud-based database management system used for project management and collaboration.,inferred,1.0
+Zapier,integration platform,"A web-based service that connects various apps, allowing them to automate tasks without manual intervention.",inferred,1.0
+Calendarly,calendar management system,A calendar management system used for scheduling appointments and meetings.,inferred,1.0
+SMS,communication platform,A text messaging service used for communication between devices.,inferred,1.0

@@ -1,0 +1,322 @@
+{
+  "video_title": "YouTube Video opi1s_5Dm-c",
+  "video_id": "opi1s_5Dm-c",
+  "marketing_keywords": [
+    {
+      "keyword": "B to C",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Replet V2",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Product Requirements Document (PRD)",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "selling apps on Upwork",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "software development",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "project finding",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "pricing strategies",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Vibe Coding",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "app building",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "MVP",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "case study",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "six-figure income examples",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "B2B",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "CRUD apps",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "potential earnings on Upwork",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "SAS businesses",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Startup Empire membership",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Upwork",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    }
+  ],
+  "business_processes": [
+    {
+      "name": "Finding a Market Opportunity on Upwork",
+      "description": "The process of finding a market opportunity by searching for jobs on Upwork that can be replaced or improved with an app built using AI services.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Search for technology-related jobs on Upwork that have potential to be replaced or improved with an app.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Identify a job that can be replaced or improved with an app and make a prototype of the app.",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Send a proposal to the client with the prototype and negotiate the price.",
+          "order": 3,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "Upwork that's where I sold my first Replet app is",
+        "all I did was search for a technology that I knew I could replace with an app um so I use Air Table a lot with past projects and clients for my marketing agency and I was looking at these jobs uh to do Air Table consulting and I'm sitting at my desk looking at this one job description and I'm like I think I could do this better and cheaper than in Air Table because Air Table you have to pay $20 a seat right"
+      ]
+    },
+    {
+      "name": "Building an AI App for a Client",
+      "description": "The process of building an app using AI services based on the client's requirements and negotiating the price.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Receive a job offer from a client to build an app that replaces or improves their existing software.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Build the app using AI services and negotiate the price with the client.",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "so we're going to try to look for something here real quick that we could mock up to someone",
+        "we start we need to find someone to buy the app before we build it that's where most people get this wrong is they build something and then try to sell it or try to get users but I found it's a lot easier to just find something someone wants to buy and then build it"
+      ]
+    },
+    {
+      "name": "Selling an AI App",
+      "description": "The process of selling an app that has been built using AI services.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Find a potential buyer for the app.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Negotiate the price and terms with the buyer.",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "so we start we need to find someone to buy the app before we build it that's where most people get this wrong is they build something and then try to sell it or try to get users but I found it's a lot easier to just find something someone wants to buy and then build it"
+      ]
+    }
+  ],
+  "technical_processes": [
+    {
+      "name": "Scouring Upwork for Business Problems",
+      "description": "Identifying business problems by searching for job postings on Upwork that can be addressed with a custom app or service.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Search for jobs on Upwork that have keywords related to the desired technology or software.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Analyze job descriptions to identify potential business problems that can be addressed with a custom app or service.",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "Upwork that's where I sold my first Replet app is Upwork and so all I did was search for a technology that I knew I could replace with an app um so I use Air Table a lot with past projects and clients for my marketing agency and I was looking at these jobs uh to do Air Table consulting and I'm sitting at my desk looking at this one job description and I'm like I think I could do this better and cheaper than in Air Table because Air Table you have to pay $20 a seat right"
+      ]
+    },
+    {
+      "name": "Building an MVP (Minimum Viable Product)",
+      "description": "Creating a basic version of an app or service that addresses the identified business problem.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Find someone to buy the app before building it.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Prototype the MVP based on the buyer's requirements.",
+          "order": 2,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Test and refine the MVP as needed.",
+          "order": 3,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "we start we need to find someone to buy to buy the app before we build it that's where most people get this wrong is they build something and then try to sell it or try to get users but I found it's a lot easier to just find something someone wants to buy and then build it",
+        "okay yeah let's do it so by the way I must say I've never thought of doing this before building anything like I didn't even think this was an option but it makes so much sense right these are this is validating you want to build something that people have validated before right and you can go and you can search you know custom app development on Upwork or wherever uh but I think it's an easier cell when you're replacing something or doing something better than like existing software could do"
+      ]
+    },
+    {
+      "name": "Selling the MVP",
+      "description": "Marketing and selling the built MVP to the identified buyer.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Contact the potential buyer and present the MVP.",
+          "order": 1,
+          "transcript_reference": ""
+        },
+        {
+          "description": "Negotiate terms of sale, including pricing and any necessary agreements.",
+          "order": 2,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "so we're going to try to look for something here real quick that we could mock up to someone okay yeah let's do it so by the way I must say I've never thought of doing this before building anything like I didn't even think this was an option but it makes so much sense right these are this is validating you want to build something that people have validated before right and you can go and you can search you know custom app development on Upwork or wherever uh but I think it's an easier cell when you're replacing something or doing something better than like existing software could do",
+        "and then yeah you can deploy it to a custom um domain name right in replet or you could you know push this to GitHub here push this to GitHub and download it all locally and then just push it wherever you want to deploy it uh you can mix and match keep the database here um they have data buckets on Replet too uh if you want to store photos object storage uh which is sick i would say the things that like would make this a lot easier is like just a really simple like preset way to add like Stripe or Google Oath to any um project you can do it with prompting though"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Upwork",
+      "category": "platform",
+      "description": "A freelance platform where people can offer their services, including AI services.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "Upwork now",
+        "Upwork that's where I sold my first Replet app is Upwork"
+      ]
+    },
+    {
+      "name": "Replet",
+      "category": "no-code development platform",
+      "description": "A no-code development platform used to build apps and automate workflows.",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "Replet and selling those businesses not just one time but twice i I wanted to have him on on the show to explain well what are we going to learn today i've got it laid out for you right here Greg uh we're gonna find out how to make profit with vibe coding okay there's a lot I got a lot of question marks but by the end of this episode what are some tangible skills that people are going to learn if if they make it all the way through sure uh the number one thing is how to sell an app that you've built uh that's what I get asked all the time is how to sell and how to market and the secret is not to market it's just to sell it so we're going to walk you through that okay so you've got me intrigued i'm I'm That's where I'm at i'm in the intrigue phase let's Get right into it so where do we start okay so we start we need to find someone to buy to buy the app before we build it that's where most people get this wrong is they build something and then try to sell it or try to get users but I found it's a lot easier to just find something someone wants to buy and then build it and so if you don't know anyone that wants to buy an app you should go to Upwork that's where I sold my first Replet app is Upwork"
+      ]
+    },
+    {
+      "name": "Air Table",
+      "category": "database management system",
+      "description": "A cloud-based database management system used for project management and collaboration.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "Air Table a lot with past projects and clients for my marketing agency and I was looking at these jobs uh to do Air Table consulting"
+      ]
+    },
+    {
+      "name": "Zapier",
+      "category": "integration platform",
+      "description": "A web-based service that connects various apps, allowing them to automate tasks without manual intervention.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "daily Google ad calls no code expert need for MVP development this is one I see a lot on Upwork um and it's basically going to be a bunch of integrations mvp that integrates Calendarly Zapier Air Table SMS functionalities"
+      ]
+    },
+    {
+      "name": "Calendarly",
+      "category": "calendar management system",
+      "description": "A calendar management system used for scheduling appointments and meetings.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "daily Google ad calls no code expert need for MVP development this is one I see a lot on Upwork um and it's basically going to be a bunch of integrations mvp that integrates Calendarly Zapier Air Table SMS functionalities"
+      ]
+    },
+    {
+      "name": "SMS",
+      "category": "communication platform",
+      "description": "A text messaging service used for communication between devices.",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "daily Google ad calls no code expert need for MVP development this is one I see a lot on Upwork um and it's basically going to be a bunch of integrations mvp that integrates Calendarly Zapier Air Table SMS functionalities"
+      ]
+    }
+  ],
+  "summary": "The video discusses a business strategy that leverages Upwork for finding market opportunities, building AI-powered Minimum Viable Products (MVPs), and selling these products to clients. The process begins by scouring Upwork for business problems that can be addressed with an app or service. Once a suitable opportunity is found, an MVP is built using the no-code development platform Replet. After validation, the MVP is marketed and sold to the identified buyer. Other technologies used in this process include Air Table for database management, Zapier for integration, Calendarly for calendar management, SMS for communication, and potentially other marketing keywords such as Vibe Coding and software development pricing strategies."
+}

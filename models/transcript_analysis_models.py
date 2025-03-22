@@ -59,11 +59,12 @@ class TranscriptSegment(BaseModel):
     start_time_approx: Optional[str] = None  # Optional timestamp
 
 class SegmentStats(BaseModel):
-    """Statistics about a transcript segment"""
-    segment_id: str
-    word_count: int
-    sentence_count: int
-    avg_word_length: float = 0.0
+    """Statistics about transcript segmentation"""
+    total_segments: Dict[str, int] = Field(default_factory=lambda: {"value": 0})
+    total_transcript_words: Dict[str, int] = Field(default_factory=lambda: {"value": 0})
+    total_segment_words: Dict[str, int] = Field(default_factory=lambda: {"value": 0})
+    coverage_percentage: Dict[str, float] = Field(default_factory=lambda: {"value": 0.0})
+    processing_time_seconds: Dict[str, float] = Field(default_factory=lambda: {"value": 0.0})
     
 class TopicList(BaseModel):
     """List of topics for segmentation first step"""

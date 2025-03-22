@@ -3,18 +3,18 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
 import re
 
-def extract_video_id(url: str) -> Optional[str]:
-    """Extract video ID from various YouTube URL formats"""
+def extract_youtube_id(url: str) -> Optional[str]:
+    """Extract YouTube video ID from various URL formats"""
+    # Handle escaped characters
+    cleaned_url = url.replace('\\?', '?').replace('\\=', '=')
+    
     patterns = [
-        r'(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)',  # Standard and shortened URLs
-        r'youtube\.com\/embed\/([\w-]+)',                    # Embedded URLs
-        r'youtube\.com\/v\/([\w-]+)',                        # Old version
-        r'youtube\.com\/user\/\w+\/?\w+\/([\w-]+)',          # User page format
-        r'youtube\.com\/shorts\/([\w-]+)'                    # YouTube Shorts
+        r'(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})',
+        r'youtube\.com\/watch\?.*v=([\w-]{11})'
     ]
     
     for pattern in patterns:
-        match = re.search(pattern, url)
+        match = re.search(pattern, cleaned_url)
         if match:
             return match.group(1)
     
@@ -68,7 +68,7 @@ def fetch_video_info(video_id: str) -> Dict:
 
 def fetch_transcript_from_url(url: str, languages=['en']) -> Dict:
     """Fetch transcript and video info from a YouTube URL"""
-    video_id = extract_video_id(url)
+    video_id = extract_youtube_id(url)
     if not video_id:
         return {"success": False, "error": "Could not extract video ID from URL"}
     

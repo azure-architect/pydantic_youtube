@@ -9,7 +9,7 @@
       "business_processes": [],
       "technical_processes": [],
       "technologies": [],
-      "start_time": "2025-03-22T12:28:27.913132",
+      "start_time": "2025-03-22T13:04:19.449145",
       "segment_stats": {},
       "summary": "",
       "segmentation_agent_messages": [],
@@ -23,11 +23,11 @@
     "node": {
       "node_id": "SegmentTranscript"
     },
-    "start_ts": "2025-03-22T04:28:27.936828Z",
-    "duration": 299.83834866700636,
+    "start_ts": "2025-03-22T05:04:19.482678Z",
+    "duration": 275.16785874999186,
     "status": "success",
     "kind": "node",
-    "id": "SegmentTranscript:f278376bffaf4fa1bef94fe1d535d1b1"
+    "id": "SegmentTranscript:1465db325690468ab1b7c77bdee86bee"
   },
   {
     "state": {
@@ -36,37 +36,37 @@
       "video_id": "opi1s_5Dm-c",
       "segments": [
         {
-          "topic": "Case study of a friend named Billy who has started and sold multiple Replet apps",
+          "topic": "Discussion about the pricing of projects on Upwork and how to determine if a project is worth pursuing",
           "content": "",
           "start_time_approx": null
         },
         {
-          "topic": "Explanation of the process of selling an app built with Vibe Coding",
+          "topic": "Introduction to the episode",
           "content": "",
           "start_time_approx": null
         },
         {
-          "topic": "Discussion on the potential risks and rewards of building multi-million dollar SAS businesses",
+          "topic": "Discussion about making money on the internet with Vibe Coding and Upwork",
           "content": "",
           "start_time_approx": null
         },
         {
-          "topic": "Introduction to the episode and topic",
+          "topic": "Mention of Startup Empire, a private membership for people looking to build out startup ideas",
           "content": "",
           "start_time_approx": null
         },
         {
-          "topic": "Discussion on how people are making money on Upwork by selling AI services",
+          "topic": "Example of searching for a job on Upwork that can be replaced or improved upon",
           "content": "",
           "start_time_approx": null
         },
         {
-          "topic": "Step-by-step guide on finding business problems and creating SAS businesses using Upwork",
-          "content": "Start by finding someone to buy the app before building it, search for technology jobs with keywords like custom app development or automations on Upwork. Look for projects that require integrations of services like Calendarly, Zapier, Air Table, and SMS functionalities. Prioritize apps that are easy to push and deploy (CRUD apps). If the pricing is too low, submit a proposal with a higher price. Once you find a project, build a prototype and send it as a Loom link to the client.",
+          "topic": "Step-by-step guide on finding someone to buy an app before building it using Upwork",
+          "content": "To find someone to buy an app before building it using Upwork, follow these steps: \n1. Search for technology that you can replace with an app.\n2. Look for jobs on Upwork that have the technology you want to replace in their keywords.\n3. Prioritize apps that are easy to push and deploy.\n4. Send a proposal with a loom link of your prototype if you find something you can mock up.",
           "start_time_approx": null
         },
         {
-          "topic": "Explanation of Vibe Coding and its use in making money on the internet",
+          "topic": "Explanation of how Billy has made profit with vibe coding",
           "content": "",
           "start_time_approx": null
         }
@@ -75,13 +75,23 @@
       "business_processes": [],
       "technical_processes": [],
       "technologies": [],
-      "start_time": "2025-03-22T12:28:27.913132",
+      "start_time": "2025-03-22T13:04:19.449145",
       "segment_stats": {
-        "total_segments": 7,
-        "total_transcript_words": 7440,
-        "total_segment_words": 83,
-        "coverage_percentage": 1.1155913978494625,
-        "processing_time_seconds": 299.7712459564209
+        "total_segments": {
+          "value": 7
+        },
+        "total_transcript_words": {
+          "value": 7440
+        },
+        "total_segment_words": {
+          "value": 72
+        },
+        "coverage_percentage": {
+          "value": 0.967741935483871
+        },
+        "processing_time_seconds": {
+          "value": 275.11447405815125
+        }
       },
       "summary": "",
       "segmentation_agent_messages": [],
@@ -94,11 +104,13 @@
       },
       "function_call_errors": {}
     },
-    "node": {},
+    "node": {
+      "node_id": "ExtractKeywords"
+    },
     "start_ts": null,
     "duration": null,
     "status": "created",
     "kind": "node",
-    "id": "ExtractKeywords:b83610b2dd984496824681c732b588f8"
+    "id": "ExtractKeywords:c1b578a7ae4f4a05b2c2757a7e601bb7"
   }
 ]

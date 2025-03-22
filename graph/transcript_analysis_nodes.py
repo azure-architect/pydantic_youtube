@@ -68,7 +68,7 @@ class SegmentTranscript(BaseNode[TranscriptAnalysisState, AnalysisResources]):
             context_size = ctx.deps.context_window_size
             temperature = ctx.deps.temperature
             
-            # Use the new segmentation tool from ollama_toolkit
+            # Use the segmentation tool from ollama_toolkit
             from ollama_toolkit.tools.text_segmentation import segment_transcript
             
             # Record the start time for performance tracking
@@ -92,17 +92,22 @@ class SegmentTranscript(BaseNode[TranscriptAnalysisState, AnalysisResources]):
                 # Convert Pydantic models to dictionaries for state storage
                 ctx.state.segments = [segment.model_dump() for segment in result["segments"]]
                 
+                # Ensure all segments have start_time_approx as a string, not None
+                for segment in ctx.state.segments:
+                    if segment.get("start_time_approx") is None:
+                        segment["start_time_approx"] = ""  # Empty string instead of None
+                
                 # Calculate and store some statistics about the segmentation
                 total_words = len(ctx.state.transcript.split())
                 segment_words = sum(len(segment["content"].split()) for segment in ctx.state.segments)
                 coverage = (segment_words / total_words) * 100 if total_words > 0 else 0
                 
                 ctx.state.segment_stats = {
-                    "total_segments": len(ctx.state.segments),
-                    "total_transcript_words": total_words,
-                    "total_segment_words": segment_words, 
-                    "coverage_percentage": coverage,
-                    "processing_time_seconds": elapsed_time
+                    "total_segments": {"value": len(ctx.state.segments)},
+                    "total_transcript_words": {"value": total_words},
+                    "total_segment_words": {"value": segment_words}, 
+                    "coverage_percentage": {"value": coverage},
+                    "processing_time_seconds": {"value": elapsed_time}
                 }
                 
                 logging.info(f"Successfully segmented transcript into {len(ctx.state.segments)} segments")
@@ -122,6 +127,11 @@ class SegmentTranscript(BaseNode[TranscriptAnalysisState, AnalysisResources]):
                 fallback_segments = self._fallback_segmentation(ctx.state.transcript)
                 ctx.state.segments = fallback_segments
                 
+                # Ensure all segments have start_time_approx as a string in fallback
+                for segment in ctx.state.segments:
+                    if segment.get("start_time_approx") is None:
+                        segment["start_time_approx"] = ""
+                
                 logging.info(f"Using fallback segmentation with {len(fallback_segments)} segments")
                 return ExtractKeywords()
                 
@@ -133,7 +143,7 @@ class SegmentTranscript(BaseNode[TranscriptAnalysisState, AnalysisResources]):
             ctx.state.function_call_errors["segment_transcript"] = str(e)
             
             # Implement simple fallback - treat entire transcript as one segment
-            ctx.state.segments = [{"topic": "Full Transcript", "content": ctx.state.transcript}]
+            ctx.state.segments = [{"topic": "Full Transcript", "content": ctx.state.transcript, "start_time_approx": ""}]
             logging.info("Using emergency fallback segmentation (single segment)")
             return ExtractKeywords()
     
