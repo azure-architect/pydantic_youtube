@@ -16,7 +16,6 @@ def run_tests():
     # Run pytest with appropriate arguments
     pytest_args = [
         '-v',                  # Verbose output
-        '--asyncio-mode=auto', # Handle asyncio tests
         'tests/'               # Test directory
     ]
     

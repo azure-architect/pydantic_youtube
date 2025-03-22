@@ -70,7 +70,7 @@ TECHNOLOGY_RESPONSE = {
     }
 }
 
-# tests/mocks/ollama_responses.py (continued)
+# Error responses
 ERROR_RESPONSE = {
    "message": {
        "content": "Invalid JSON response that does not conform to the expected schema"
@@ -97,14 +97,6 @@ MOCK_RESPONSES = {
 def get_mock_response(function_name, error=False, timeout=False):
    """
    Get a mock response for a particular function call
-   
-   Args:
-       function_name: The name of the function being called
-       error: Whether to return an error response
-       timeout: Whether to simulate a timeout
-   
-   Returns:
-       A mock response object
    """
    if timeout:
        return TIMEOUT_RESPONSE

@@ -4,6 +4,8 @@ import sys
 import os
 import json
 from unittest.mock import patch
+from unittest.mock import MagicMock
+from state.transcript_analysis_state import AnalysisResources
 
 # Add the project root to sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -54,3 +56,15 @@ def patch_ollama_chat():
     """Patch the ollama.chat function for testing"""
     with patch('ollama.chat') as mock_chat:
         yield mock_chat
+
+
+@pytest.fixture
+def mock_resources():
+    """Create mock resources for testing"""
+    return AnalysisResources(
+        http_client=MagicMock(),
+        api_key="test-key",
+        model="test-model",
+        context_window_size=32768,
+        temperature=0.1
+    )

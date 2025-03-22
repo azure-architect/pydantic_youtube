@@ -1,0 +1,52 @@
+{
+  "video_title": "Python Tutorial",
+  "video_id": "python123",
+  "marketing_keywords": [
+    {
+      "keyword": "Python",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    },
+    {
+      "keyword": "Tutorial",
+      "relevance_score": 1.0,
+      "context": "From transcript",
+      "frequency": 1
+    }
+  ],
+  "business_processes": [],
+  "technical_processes": [
+    {
+      "name": "Hello and welcome to this tutorial on Python progr...",
+      "description": "Technical process extracted from segment: Introduction",
+      "inference_type": "inferred",
+      "confidence_score": 1.0,
+      "steps": [
+        {
+          "description": "Step identified from transcript",
+          "order": 1,
+          "transcript_reference": ""
+        }
+      ],
+      "transcript_references": [
+        "Hello and welcome to this tutorial on Python programming.\nToday we'll be covering the basics of Pyth..."
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Python",
+      "category": "Programming Language",
+      "description": "A programming language mentioned in the transcript",
+      "inference_type": "direct",
+      "confidence_score": 1.0,
+      "transcript_references": [
+        "...\nHello and welcome to this tutorial on Python programming.\nToday we'll be covering the basics o...",
+        "...rogramming.\nToday we'll be covering the basics of Python syntax and how to get started.\nFirst, let's talk ...",
+        "...et started.\nFirst, let's talk about variables. In Python, you don't need to declare variable types.\nNext, ..."
+      ]
+    }
+  ],
+  "summary": ""
+}

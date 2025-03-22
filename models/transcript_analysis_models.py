@@ -112,3 +112,20 @@ class TechnologyList(BaseModel):
 class SummaryGeneration(BaseModel):
     """Summary generation model for function calling"""
     summary: str
+
+class TechnicalProcessStep(BaseModel):
+    """Step in a technical process for function calling"""
+    description: str
+    order: int
+    
+class TechnicalProcessExtraction(BaseModel):
+    """Technical process extraction model for function calling"""
+    name: str
+    description: str
+    steps: List[TechnicalProcessStep]
+    inference_type: str
+    transcript_references: List[str]
+    
+class TechnicalProcessList(BaseModel):
+    """List of technical processes for function calling"""
+    processes: List[TechnicalProcessExtraction]
