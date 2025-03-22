@@ -27,6 +27,7 @@ httpx-sse==0.4.0
 huggingface-hub==0.29.3
 idna==3.10
 importlib_metadata==8.6.1
+iniconfig==2.1.0
 jiter==0.9.0
 jmespath==1.0.1
 jsonpath-python==1.0.6
@@ -40,6 +41,7 @@ ollama==0.4.7
 openai==1.67.0
 opentelemetry-api==1.31.0
 packaging==24.2
+pluggy==1.5.0
 prompt_toolkit==3.0.50
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
@@ -50,6 +52,7 @@ pydantic-graph==0.0.42
 pydantic-settings==2.8.1
 pydantic_core==2.27.2
 Pygments==2.19.1
+pytest==8.3.5
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 PyYAML==6.0.2
