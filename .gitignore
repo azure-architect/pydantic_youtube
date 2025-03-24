@@ -1,0 +1,60 @@
+.env
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env/
+.venv/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+
+# Machine learning and data files
+*.pkl
+*.model
+*.h5
+*.keras
+*.joblib
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# Project-specific AI and graph-related temporary files
+*.graph
+*.model
+*.checkpoint
+
+# Tensor and model cache
+.cache/
+
+*_env/
