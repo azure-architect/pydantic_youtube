@@ -132,9 +132,6 @@ def get_youtube_video_data(video_id, include_channel_videos=False, max_channel_v
         # 3. Comments - Only get the count
         comments_data = get_comments_data(video_statistics)
 
-        # 4. Related Videos
-        related_videos = get_related_videos(youtube, video_id)
-
         # Format publishedAt date
         try:
             published_at = datetime.strptime(video_snippet['publishedAt'], '%Y-%m-%dT%H:%M:%SZ').isoformat()
@@ -154,12 +151,10 @@ def get_youtube_video_data(video_id, include_channel_videos=False, max_channel_v
                 "thumbnail": video_snippet['thumbnails']['standard']['url'] if 'standard' in video_snippet.get('thumbnails',{}) else 'N/A',
                 "comments": comments_data
             },
-            "relatedVideos": related_videos,
-            "channel": channel_data,
-            
+            "channel": channel_data
         }
 
-        # 5. Include channel videos if requested
+        # 4. Include channel videos if requested
         if include_channel_videos:
             result["channelVideos"] = get_channel_videos(youtube, channel_id, max_results=max_channel_videos)
 
@@ -328,33 +323,3 @@ def get_comments_data(video_statistics):
         "commentCount": int(comment_count) if comment_count != 'N/A' else None,
         "sampleComments": []  # Always empty now
     }
-def get_related_videos(youtube, video_id):
-    """Retrieves related videos."""
-    try:
-        # Try a different approach - search by title instead of relatedToVideoId
-        search_response = youtube.search().list(
-            part='snippet',
-            q=f"related to {video_id}",  # Just a simple text search
-            type='video',
-            maxResults=5
-        ).execute()
-
-        related_videos = []
-        if search_response.get('items'):
-            for item in search_response.get('items', []):
-                if 'videoId' in item.get('id', {}):
-                    related_videos.append({
-                        "id": item['id']['videoId'],
-                        "title": item['snippet'].get('title', 'N/A'),
-                        "channelTitle": item['snippet'].get('channelTitle', 'N/A'),
-                        "thumbnail": item['snippet']['thumbnails']['default'].get('url', 'N/A') 
-                            if 'thumbnails' in item['snippet'] and 'default' in item['snippet']['thumbnails'] else 'N/A'
-                    })
-        return related_videos
-
-    except HttpError as e:
-        logger.warning(f"Could not retrieve related videos: {e.resp.status} - {e.content.decode()}")
-        return []
-    except Exception as e:
-        logger.exception(f"Unexpected error getting related videos: {e}")
-        return []
