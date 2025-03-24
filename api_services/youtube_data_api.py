@@ -17,9 +17,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Channel cache configuration
+# Cache configuration
 CHANNEL_CACHE_FILE = "channel_cache.json"
-CACHE_TTL = timedelta(hours=24)  # Cache Time-to-Live
+CHANNEL_VIDEOS_CACHE_FILE = "channel_videos_cache.json"
+CACHE_TTL = timedelta(days=2)  # 48 hours cache lifetime
 
 def load_channel_cache():
     """Loads the channel cache from file, handling JSON errors."""
@@ -28,10 +29,9 @@ def load_channel_cache():
         try:
             with open(CHANNEL_CACHE_FILE, 'r') as f:
                 data = json.load(f)
-                # Validate JSON structure (example)
                 if isinstance(data, dict):
-                  channel_cache = data
-                  logger.info(f"Loaded cache with {len(channel_cache)} channels")
+                    channel_cache = data
+                    logger.info(f"Loaded cache with {len(channel_cache)} channels")
                 else:
                     logger.warning("Channel cache file is not a dictionary.")
         except json.JSONDecodeError:
@@ -40,20 +40,56 @@ def load_channel_cache():
             logger.warning(f"Could not load channel cache: {e}")
     return channel_cache
 
+def load_channel_videos_cache():
+    """Loads the channel videos cache from file."""
+    cache = {}
+    if os.path.exists(CHANNEL_VIDEOS_CACHE_FILE):
+        try:
+            with open(CHANNEL_VIDEOS_CACHE_FILE, 'r') as f:
+                data = json.load(f)
+                if isinstance(data, dict):
+                    cache = data
+                    logger.info(f"Loaded videos cache with {len(cache)} channels")
+                else:
+                    logger.warning("Channel videos cache file is not a dictionary.")
+        except json.JSONDecodeError:
+            logger.warning("Could not decode JSON from channel videos cache file.")
+        except Exception as e:
+            logger.warning(f"Could not load channel videos cache: {e}")
+    return cache
+
 channel_cache = load_channel_cache()
+channel_videos_cache = load_channel_videos_cache()
 
 def save_channel_cache(channel_cache):
     """Saves the channel cache to file."""
     try:
         with open(CHANNEL_CACHE_FILE, 'w') as f:
-            json.dump(channel_cache, f, indent=4) # Use indent for readability
+            json.dump(channel_cache, f, indent=4)
         logger.info(f"Updated channel cache")
     except Exception as e:
         logger.warning(f"Could not save channel cache: {e}")
 
-def get_youtube_video_data(video_id):
+def save_channel_videos_cache(cache):
+    """Saves the channel videos cache to file."""
+    try:
+        with open(CHANNEL_VIDEOS_CACHE_FILE, 'w') as f:
+            json.dump(cache, f, indent=4)
+        logger.info(f"Updated channel videos cache")
+    except Exception as e:
+        logger.warning(f"Could not save channel videos cache: {e}")
+
+def get_youtube_video_data(video_id, include_channel_videos=False, max_channel_videos=10):
     """
     Retrieves YouTube video and channel data with caching.
+
+    Args:
+        video_id (str): YouTube video ID
+        include_channel_videos (bool): Whether to include channel videos in the response
+        max_channel_videos (int): Maximum number of channel videos to include
+
+    Returns:
+        dict: Comprehensive video data or None on failure
     """
     try:
         api_key = os.getenv('YT_DATA_API_KEY')
@@ -83,10 +119,9 @@ def get_youtube_video_data(video_id):
         channel_data = get_channel_data(youtube, channel_id, video_snippet)
         if channel_data is None:  # Handle channel retrieval failure
             logger.warning(f"Could not retrieve channel data for video ID: {video_id}")
-            #  Provide a fallback, *but still return video data*.
             channel_data = {
                 "id": channel_id,
-                "title": video_snippet.get('channelTitle', 'Unknown Channel'), # Use video snippet as fallback
+                "title": video_snippet.get('channelTitle', 'Unknown Channel'),
                 "description": "N/A",
                 "subscriberCount": None,
                 "channelAge": "N/A",
@@ -94,9 +129,8 @@ def get_youtube_video_data(video_id):
                 "isVerified": False
             }
 
-
         # 3. Comments - Only get the count
-        comments_data = get_comments_data(video_statistics) # Simplified
+        comments_data = get_comments_data(video_statistics)
 
         # 4. Related Videos
         related_videos = get_related_videos(youtube, video_id)
@@ -107,7 +141,7 @@ def get_youtube_video_data(video_id):
         except (ValueError, TypeError):
             published_at = 'N/A'
 
-        return {
+        result = {
             "video": {
                 "id": video_id,
                 "title": video_snippet['title'],
@@ -118,16 +152,23 @@ def get_youtube_video_data(video_id):
                 "tags": video_snippet.get('tags', []),
                 "topicDetails": video_topic_details,
                 "thumbnail": video_snippet['thumbnails']['standard']['url'] if 'standard' in video_snippet.get('thumbnails',{}) else 'N/A',
-                "comments": comments_data  # Now just the count
+                "comments": comments_data
             },
+            "relatedVideos": related_videos,
             "channel": channel_data,
-            "relatedVideos": related_videos
+            
         }
+
+        # 5. Include channel videos if requested
+        if include_channel_videos:
+            result["channelVideos"] = get_channel_videos(youtube, channel_id, max_results=max_channel_videos)
+
+        return result
 
     except HttpError as e:
         logger.error(f"HTTP error: {e.resp.status} - {e.content.decode()}")
         if e.resp.status == 403 and "quotaExceeded" in str(e.content):
-            logger.error("YouTube API quota exceeded.  Consider waiting or optimizing API usage.")
+            logger.error("YouTube API quota exceeded. Consider waiting or optimizing API usage.")
         return None
     except Exception as e:
         logger.exception(f"Error: {e}")
@@ -196,6 +237,86 @@ def get_channel_data(youtube, channel_id, video_snippet):
         logger.exception(f"Error fetching channel data: {e}")
         return None
 
+def get_channel_videos(youtube, channel_id, max_results=10):
+    """
+    Retrieves videos from a specific channel with caching.
+
+    Args:
+        youtube: YouTube API service object
+        channel_id (str): ID of the channel
+        max_results (int): Maximum number of videos to retrieve
+
+    Returns:
+        list: List of video information dictionaries
+    """
+    global channel_videos_cache
+    now = datetime.utcnow()
+
+    # Check cache first
+    if channel_id in channel_videos_cache:
+        cached_data = channel_videos_cache[channel_id]
+        if 'cached_at' in cached_data and now - datetime.fromisoformat(cached_data['cached_at']) < CACHE_TTL:
+            logger.info(f"Using cached video list for channel: {channel_id}")
+            return cached_data['videos']
+        else:
+            logger.info(f"Cached video list for channel {channel_id} expired.")
+
+    logger.info(f"Fetching videos for channel: {channel_id}")
+    try:
+        # First, get the upload playlist ID for the channel
+        channels_response = youtube.channels().list(
+            part="contentDetails",
+            id=channel_id
+        ).execute()
+
+        if not channels_response['items']:
+            logger.warning(f"Channel not found: {channel_id}")
+            return []
+
+        # Get the uploads playlist ID
+        uploads_playlist_id = channels_response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+
+        # Get videos from the uploads playlist
+        videos = []
+        next_page_token = None
+
+        while len(videos) < max_results:
+            playlist_items_response = youtube.playlistItems().list(
+                part="snippet,contentDetails",
+                playlistId=uploads_playlist_id,
+                maxResults=min(50, max_results - len(videos)),
+                pageToken=next_page_token
+            ).execute()
+
+            for item in playlist_items_response['items']:
+                video_data = {
+                    'id': item['contentDetails']['videoId'],
+                    'title': item['snippet']['title'],
+                    'description': item['snippet'].get('description', ''),
+                    'publishedAt': item['snippet']['publishedAt'],
+                    'thumbnail': item['snippet']['thumbnails']['default']['url'] if 'default' in item['snippet']['thumbnails'] else None
+                }
+                videos.append(video_data)
+
+            next_page_token = playlist_items_response.get('nextPageToken')
+            if not next_page_token or len(videos) >= max_results:
+                break
+
+        # Store in cache with timestamp
+        channel_videos_cache[channel_id] = {
+            'videos': videos,
+            'cached_at': now.isoformat()
+        }
+        save_channel_videos_cache(channel_videos_cache)
+
+        return videos
+
+    except HttpError as e:
+        logger.error(f"HTTP error fetching channel videos: {e.resp.status} - {e.content.decode()}")
+        return []
+    except Exception as e:
+        logger.exception(f"Error fetching channel videos: {e}")
+        return []
 
 def get_comments_data(video_statistics):
     """
@@ -207,27 +328,28 @@ def get_comments_data(video_statistics):
         "commentCount": int(comment_count) if comment_count != 'N/A' else None,
         "sampleComments": []  # Always empty now
     }
-
-
 def get_related_videos(youtube, video_id):
     """Retrieves related videos."""
     try:
-        related_response = youtube.search().list(
+        # Try a different approach - search by title instead of relatedToVideoId
+        search_response = youtube.search().list(
             part='snippet',
+            q=f"related to {video_id}",  # Just a simple text search
             type='video',
-            relatedToVideoId=video_id,
             maxResults=5
         ).execute()
 
         related_videos = []
-        if related_response.get('items'):
-            for item in related_response['items']:
-                related_videos.append({
-                    "id": item['id'].get('videoId', 'N/A'),
-                    "title": item['snippet'].get('title', 'N/A'),
-                    "channelTitle": item['snippet'].get('channelTitle', 'N/A'),
-                    "thumbnail": item['snippet']['thumbnails']['default'].get('url', 'N/A') if 'default' in item['snippet'].get('thumbnails', {}) else 'N/A'
-                })
+        if search_response.get('items'):
+            for item in search_response.get('items', []):
+                if 'videoId' in item.get('id', {}):
+                    related_videos.append({
+                        "id": item['id']['videoId'],
+                        "title": item['snippet'].get('title', 'N/A'),
+                        "channelTitle": item['snippet'].get('channelTitle', 'N/A'),
+                        "thumbnail": item['snippet']['thumbnails']['default'].get('url', 'N/A') 
+                            if 'thumbnails' in item['snippet'] and 'default' in item['snippet']['thumbnails'] else 'N/A'
+                    })
         return related_videos
 
     except HttpError as e:

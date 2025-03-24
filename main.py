@@ -22,8 +22,7 @@ def main():
         video_id = transcript_data['video_id']
 
         # Fetch YouTube video and channel data using the video ID
-        video_info = get_youtube_video_data(video_id)
-
+        video_info = get_youtube_video_data(video_id, include_channel_videos=False)
         # Add video info to the transcript data object
         if video_info:
             transcript_data['video_info'] = video_info
